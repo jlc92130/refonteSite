@@ -5,6 +5,36 @@ body {
 .perso_policeTitre {
   font-family: 'Roboto', sans-serif; }
 
+.perso_shadow {
+  box-shadow: 0px 2px 15px black; }
+
+.perso_logoSize {
+  width: 100px; }
+
+.perso_ColorRoseMenu {
+  color: #FF00FF !important; }
+
+.perso_ColorOrangeMenu {
+  color: #f7b35b !important; }
+
+.perso_ColorVertMenu {
+  color: #34C924 !important; }
+
+.perso_ColorRougeMenu {
+  color: #e64e4e !important; }
+
+.perso_ColorBleuCielMenu {
+  color: #40E0D0 !important; }
+
+.perso_size20 {
+  font-size: 20px; }
+
+.perso_minCorpSize {
+  min-height: 500px; }
+
+.perso_textShadow {
+  text-shadow: 1px 1px black; }
+
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
