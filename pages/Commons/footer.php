@@ -1,7 +1,7 @@
 </div>
 <!--FOOTER -->
 <footer class="bg-dark text-center text-white rounded-bottom">
-<p class='p-2'>&copy; Association N.A 2020</p>
+<p class='p-2'>&copy; Association Les Chatons 2020</p>
 </footer>
 </div>
 

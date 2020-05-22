@@ -2,6 +2,10 @@ body {
   font-family: 'copse','serif';
   color: #44586e; }
 
+hr {
+  border-color: grey;
+  margin: 2% 20%; }
+
 .perso_policeTitre {
   font-family: 'Roboto', sans-serif; }
 
@@ -28,6 +32,9 @@ body {
 
 .perso_size20 {
   font-size: 20px; }
+
+.perso_size12 {
+  font-size: 12px; }
 
 .perso_minCorpSize {
   min-height: 500px; }

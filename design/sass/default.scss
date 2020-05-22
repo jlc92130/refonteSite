@@ -2,7 +2,10 @@ body {
   font-family: 'copse','serif';
   color: #44586e;
 }
-
+hr {
+  border-color: grey;
+  margin: 2% 20%;
+}
 .perso_policeTitre {
   font-family: 'Roboto', sans-serif;
 }
@@ -19,6 +22,7 @@ body {
 .perso_ColorRougeMenu{color : rgb(230, 78, 78) !important;}
 .perso_ColorBleuCielMenu{color : #40E0D0 !important;}
 .perso_size20{font-size:20px;}
+.perso_size12{font-size:12px;}
 .perso_minCorpSize{min-height: 500px;}
 .perso_textShadow{text-shadow:  1px 1px black;}
 

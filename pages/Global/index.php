@@ -1,6 +1,5 @@
 <?php include('../Commons/header.php'); ?>
-<h2 class="text-center mt-3 perso_ColorRoseMenu perso_policeTitre perso_textShadow">Ils ont besoin de vous</h2>
-
+<?php echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO ) ?>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
@@ -14,30 +13,30 @@
           <img src="../../src/img/Animaux/Chats/Odin/Odin.jpg" style="height:250px;" alt="photo de Odin">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
-          <h3>Odin</h3>
-          <div>02/2020</div>
-          <p>
-            Description de Odin
+          <h3 class="perso_ColorRoseMenu perso_textShadow">Odin</h3>
+          <div class="text-muted mb-1">02/2020</div>
+          <p class="mb-auto perso_size12">
+            Description de Odin ...
           </p>
+          <a href="" class="btn btn-primary">Visiter ma page</a>
         </div>
-        <a href="" class="btn btn-primary">Visiter ma page</a>
       </div>
     </div>
     <!-- FIN ITEM -->
     <!-- DEBUT ITEM -->
         <div class="carousel-item">
-      <div class='row no gutters border rounded overflow-hidden mb-4'>  
+      <div class='row no-gutters border rounded overflow-hidden mb-4'>  
         <div class='col-12 col-md-auto text-center'>
           <img src="../../src/img/Animaux/Chats/Samdie/Samdie2.jpg" style="height:250px;" alt="photo de Sam">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
-          <h3>Sam</h3>
-          <div>01/2020</div>
-          <p>
-            Description de Sam
+          <h3 class="perso_ColorVertMenu perso_textShadow">Sam</h3>
+          <div class="text-muted mb-1">01/2020</div>
+          <p class="mb-auto perso_size12">
+            Description de Sam....
           </p>
+          <a href="" class="btn btn-primary">Visiter ma page</a>
         </div>
-        <a href="" class="btn btn-primary">Visiter ma page</a>
       </div>
     </div>
     <!-- FIN ITEM -->
@@ -53,34 +52,38 @@
 </div>
 
 <div class='row'>
-  <div class='col-6 mt-3'>    
-    <h2 class="text-center mt-3 perso_ColorVertMenu perso_policeTitre perso_textShadow"><img src="../../src/img/Autres/icones/journal.png" alt="logo News"/>  Nouvelles des adoptés</h2>
+  <div class='col-6 mt-3'>  
+    <?php $txt = "<img src='../../src/img/Autres/icones/journal.png' alt='logo News'/>Nouvelles des adoptés";
+      echo  styleTitreNiveau2($txt,COLOR_ACTUS ); ?>
   </div>
-  <div class='col-6 mt-3'>    
-    <h2 class="text-center mt-3 perso_ColorOrangeMenu perso_policeTitre perso_textShadow"><img src="../../src/img/Autres/icones/action.png" alt="logo News"/>Evénements & Actions</h2>
+  <div class='col-6 mt-3'>  
+    <?php $txt = "<img src='../../src/img/Autres/icones/journal.png' alt='logo News'/>Evénements & Actions";
+      echo  styleTitreNiveau2($txt,COLOR_PENSIONNAIRE ); ?>
   </div>
 </div>
 
 <div class="row">
   <div class='col-6 mt-3'>
-    <div class="row nogutters border rounded mb-4">
+    <div class="row no-gutters border rounded mb-4">
       <div class='col-auto d-none d-lg-block'>
         <img src="../../src/img/Animaux/Chats/Odin/Odin.jpg" style="height:150px;" alt="photo de Odin">
       </div>
       <div class="col p-3 d-flex flex-column position-static">
-        <h3 class="mb-0">Doyenne Chipie</h3>
+        <h3 class="mb-0 perso_ColorRoseMenu">Doyenne Chipie</h3>
         <p>Un petit coucou de Chipie en famille d'accueil </p>
         <a href="" class="btn btn-primary">Visiter ma page</a>
       </div>
     </div>
-  
+  </div>
   <div class='col-6 mt-3'>
-    <div class="row nogutters rounded mb-4">
-      <div col col-auto d-none d-lg-block >
+    <div class="row no-gutters border rounded mb-4">
+      <div class="col-auto d-none d-lg-block" >
        <img src="../../src/img/Animaux/Chats/Samdie/Samdie2.jpg" style="height:150px;" alt="photo de Sam">
       </div>
-      <div col p-3 d-flex flex>
-
+      <div class="col p-3 d-flex flex-column position-static" >
+      <h3 class="mb-0 perso_ColorVertMenu">Notre nouvelle</h3>
+        <p>Je suis nouvelle et en attente de trouver un refuge </p>
+        <a href="" class="btn btn-primary">Visiter ma page</a>
       </div>
       
     </div>

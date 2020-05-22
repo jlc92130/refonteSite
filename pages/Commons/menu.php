@@ -40,9 +40,11 @@
             Conseils
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorRougeMenu" href="#">Asso</a>
-                <a class="dropdown-item perso_ColorRougeMenu" href="#">Another action</a>
-                 
+                <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/temperatures.php">Températures</a>
+                <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/chocolat.php">Le chocolat</a>
+                <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/plantes.php">Les plantes toxiques</a>
+                <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/sterilisation.php">Stérilisation</a>
+                <a class="dropdown-item perso_ColorRougeMenu" href="../Articles/educateur.php">Educateur canin</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -50,9 +52,9 @@
             Contacts
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorBleuCielMenu" href="#">Asso</a>
-                <a class="dropdown-item perso_ColorBleuCielMenu" href="#">Another action</a>
-                
+                <a class="dropdown-item perso_ColorBleuCielMenu" href="../Contact/contact.php">Contact</a>
+                <a class="dropdown-item perso_ColorBleuCielMenu" href="../Contact/don.php">Don</a>
+                <a class="dropdown-item perso_ColorBleuCielMenu" href="../Contact/mentions.php">Mentions légales</a>
             </div>
         </li>
     </ul>  

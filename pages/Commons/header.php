@@ -1,3 +1,5 @@
+<?php include('../../utile/formatage.php'); ?>
+<?php include('../../utile/config.php'); ?>
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -15,7 +17,7 @@
   <header class="bg-dark text-white rounded-top perso_policeTitre"> 
     <div class="row align-items-center m-0">
       <div class="col-2 p-2 text-center">
-        <a href="index.php">
+        <a href="../Global/index.php">
           <img src="../../src/img/Autres/logo_header.png" class="rounded-circle img-fluid perso_logoSize" alt="logo entete" />
         </a>
       </div>
@@ -23,7 +25,7 @@
         <?php include('../Commons/menu.php') ?>
       </div>
       <div class="col-2 text-right pt-1 pr-4 d-none d-lg-block">
-        N.A <br /> Dijon(21)
+        Les chatons 
       </div>
     </div>
   </header> 
