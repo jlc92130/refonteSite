@@ -2,7 +2,6 @@
 
 <?= styleTitreNiveau1("Donnations", COLOR_CONTACT) ?>
 
-<div class='pl-5 '> 
     <?= styleTitreNiveau3("Pourquoi faire un don", COLOR_CONTACT) ?>
     <p class='pt-2'>
         Les dons nous permettent de réaliser de nombreuses actions :
@@ -48,16 +47,16 @@
         Pour une <span class="badge badge-warning">donation financière</span>, vous pouvez nous adresser un chèque à l'association :<br/> 
         <p style="text-align:center">
             Association Nos Amis Nos Animaux<br/>
-            Hameau de la Souleille <br/> 09420 Clermont, Midi-Pyrenees, France
+            Hameau de la Souleille <br/> Hameau d'Orches, 21340 Baubigny, France
         </p>
     </p>
     <p class='pl-5'>
-        Vous avez une <span class="badge badge-warning">question</span>, Contactez nous par téléphone ou par mail<br/> 
+        Vous avez une <span class="badge badge-warning">question</span>, Contactez nous par mail<br/> 
         <p class='text-center'>
             06 10 59 94 71 - <a href="mailto:associationnosamisnosanimaux@gmail.com">associationnosamisnosanimaux@gmail.com</a>
         </p>
     </p>
-</div>
+
 
 <?php include("../Commons/footer.php"); ?>
             

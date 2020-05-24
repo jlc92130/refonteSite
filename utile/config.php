@@ -4,4 +4,5 @@
     const COLOR_ACTUS= 'perso_ColorVertMenu';
     const COLOR_CONSEILS= 'perso_ColorRougeMenu';
     const COLOR_CONTACT= 'perso_ColorBleuCielMenu';
+    
 ?>

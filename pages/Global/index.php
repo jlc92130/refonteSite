@@ -1,6 +1,6 @@
 <?php include('../Commons/header.php'); ?>
 <?php echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO ) ?>
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+<div id="carouselExampleIndicators" class="carousel slide perso_bgGreen" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1" class="bg-dark"></li>
@@ -18,7 +18,7 @@
           <p class="mb-auto perso_size12">
             Description de Odin ...
           </p>
-          <a href="" class="btn btn-primary">Visiter ma page</a>
+          <a href="./animal.php" class="btn btn-primary">Visiter ma page</a>
         </div>
       </div>
     </div>
@@ -27,7 +27,7 @@
         <div class="carousel-item">
       <div class='row no-gutters border rounded overflow-hidden mb-4'>  
         <div class='col-12 col-md-auto text-center'>
-          <img src="../../src/img/Animaux/Chats/Samdie/Samdie2.jpg" style="height:250px;" alt="photo de Sam">
+          <img src="../../src/img/Animaux/Chats/Sam/Sam.jpg" style="height:250px;" alt="photo de Sam">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="perso_ColorVertMenu perso_textShadow">Sam</h3>
@@ -64,21 +64,21 @@
 
 <div class="row">
   <div class='col-6 mt-3'>
-    <div class="row no-gutters border rounded mb-4">
+    <div class="row no-gutters border perso_bgGreen rounded mb-4">
       <div class='col-auto d-none d-lg-block'>
         <img src="../../src/img/Animaux/Chats/Odin/Odin.jpg" style="height:150px;" alt="photo de Odin">
       </div>
       <div class="col p-3 d-flex flex-column position-static">
-        <h3 class="mb-0 perso_ColorRoseMenu">Doyenne Chipie</h3>
-        <p>Un petit coucou de Chipie en famille d'accueil </p>
-        <a href="" class="btn btn-primary">Visiter ma page</a>
+        <h3 class="mb-0 perso_ColorRoseMenu">Doyen Odin</h3>
+        <p>Un petit coucou de Odin en famille d'accueil </p>
+        <a href="./animal.php" class="btn btn-primary">Visiter ma page</a>
       </div>
     </div>
   </div>
   <div class='col-6 mt-3'>
-    <div class="row no-gutters border rounded mb-4">
+    <div class="row no-gutters perso_bgGreen border rounded mb-4">
       <div class="col-auto d-none d-lg-block" >
-       <img src="../../src/img/Animaux/Chats/Samdie/Samdie2.jpg" style="height:150px;" alt="photo de Sam">
+       <img src="../../src/img/Animaux/Chats/Sam/Sam.jpg" style="height:150px;" alt="photo de Sam">
       </div>
       <div class="col p-3 d-flex flex-column position-static" >
       <h3 class="mb-0 perso_ColorVertMenu">Notre nouvelle</h3>

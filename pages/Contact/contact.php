@@ -11,7 +11,7 @@ isset($_POST['captcha']) && !empty($_POST['captcha'])
         $mail = htmlentities($_POST['mail']);
         $objet = htmlentities($_POST['objet']);
         $message = htmlentities($_POST['message']);
-        $destinataire = "associationnosamisnosanimaux@gmail.com";
+        $destinataire = "associationleschatons@gmail.com";
         mail($destinataire, $objet. " - " . $nom, "Mail : ". $mail. " Message : " . $message);
         echo '<div class="alert alert-success" role="alert">';
             echo 'Message envoyé';

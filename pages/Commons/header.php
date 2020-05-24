@@ -21,13 +21,13 @@
           <img src="../../src/img/Autres/logo_header.png" class="rounded-circle img-fluid perso_logoSize" alt="logo entete" />
         </a>
       </div>
-      <div class="col-8 m-0 p-0">
+      <div class="col-6 col-lg-8 m-0 p-0">
         <?php include('../Commons/menu.php') ?>
       </div>
-      <div class="col-2 text-right pt-1 pr-4 d-none d-lg-block">
+      <div class="col-2 text-right pt-1 pr-4 ">
         Les chatons 
       </div>
     </div>
   </header> 
 <!--CONTENU DU SITE -->
-<div class="border p-1 perso_minCorpSize">
+<div class="border p-1 perso_minCorpSize px-5">

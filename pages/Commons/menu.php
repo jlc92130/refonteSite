@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark perso_size20">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark perso_size20">
  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,9 +20,9 @@
             Pensionnaires
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorOrangeMenu" href="#">Asso</a>
-                <a class="dropdown-item perso_ColorOrangeMenu" href="#">Another action</a>
-                 
+                <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php">Ils cherchent une famille</a>
+                <a class="dropdown-item perso_ColorOrangeMenu" href="#">Famille d'Accueil Longue Durée</a>
+                <a class="dropdown-item perso_ColorOrangeMenu" href="#">Les anciens</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -30,9 +30,9 @@
             Actus
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorVertMenu" href="#">Asso</a>
-                <a class="dropdown-item perso_ColorVertMenu" href="#">Another action</a>
-                 
+                <a class="dropdown-item perso_ColorVertMenu" href="../Global/actus.php">Nouvelles des adoptés</a>
+                <a class="dropdown-item perso_ColorVertMenu" href="#">Evénements</a>
+                <a class="dropdown-item perso_ColorVertMenu" href="#">Nos actions au quotidien</a>
             </div>
         </li>
         <li class="nav-item dropdown">
