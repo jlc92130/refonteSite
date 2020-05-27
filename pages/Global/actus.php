@@ -12,7 +12,7 @@
         Manger, dormir, petit tour à la litière, retour dans le dodo juste devant le chauffage, câlins à ma Tatynou pour qu elle me donne des friandises et re dodo.
         Merci à tous pour les petits cadeaux, elle apprécie la gourmande 😉<br/><br/>
 
-        Bonne fin de soirée à tous et à bientôt pr la suite des aventures de Odin ❣️
+        Bonne fin de soirée à tous et à bientôt pr la suite des aventures de Odin 
     </div>
 </div>
 

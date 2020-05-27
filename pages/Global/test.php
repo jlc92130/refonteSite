@@ -1,10 +1,22 @@
-<?php include("../Commons/header.php");?>
+<?php
+include("../Commons/header.php");
+require_once "config.php";
+require_once "pdo.php";
 
+
+    $bdd = connexionPDO();
+    $stmt = $bdd->prepare("SELECT * FROM animal ");
+    $stmt->execute();
+
+    $resultats = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    
+?>
 <?= styleTitreNiveau1("Ils cherchent une famille", COLOR_PENSIONNAIRE) ?>
 
 <div class='row no-gutters'>
     <div class="col-12 col-lg-6">
-        <div class='row perso_bgGreen border border-dark rounded-lg m-2 align-items-center perso_bgRose' style="height:200px;">
+        <div class='row border perso_bgGreen border-dark rounded-lg m-2 align-items-center perso_bgRose' style="height:200px;">
             <div class="col p-2 text-center">
                 <img src='../../src/img/Animaux/chats/Framboise/Framboise.jpg' class="img-thumbnail" style="max-height:180px;" alt="Framboise" />
             </div>
@@ -99,4 +111,3 @@
 </div>
 
 <?php include("../Commons/footer.php"); ?>
-            

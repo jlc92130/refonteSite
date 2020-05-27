@@ -32,13 +32,13 @@
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner text-center">
                 <div class="carousel-item active">
-                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin1.jpg" style="height:500px"  alt="Odin">
+                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin1.jpg" style="max-width:70%"  alt="Odin">
                 </div>
                 <div class="carousel-item">
-                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin2.jpg" style="height:500px"  alt="Odin">
+                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin2.jpg" style="max-width:70%"  alt="Odin">
                 </div>
                 <div class="carousel-item">
-                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin3.jpg" style="height:500px"  alt="Odin">
+                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin3.jpg" style="max-width:70%"  alt="Odin">
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@
         <hr />
         <div>
             <img src="../../src/img/Autres/icones/oeil.jpg" alt="" width="50" height="50" class="d-block mx-auto">
-            AGATE se trouve sur le secteur de Dijon. Pas de co-voiturage possible.
+            Odin se trouve sur le secteur de Dijon. Pas de co-voiturage possible.
         </div>
         <hr />
         <div>
@@ -71,17 +71,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include("../Commons/footer.php"); ?>
