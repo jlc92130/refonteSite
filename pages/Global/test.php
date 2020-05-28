@@ -19,11 +19,10 @@ require_once "pdo.php";
         INNER JOIN contient c ON c.id_image = i.id_image
         INNER JOIN animal a ON c.id_animal = a.id_animal
         WHERE a.id_animal = ?
-        LIMIT 1');
+        LIMIT 1'); // we only want one image because an animal can have many images
         $stmt->execute(array($animal['id_animal']));
-        $image = $stmt->fetch(PDO::FETCH_ASSOC);
+        $image = $stmt->fetch(PDO::FETCH_ASSOC);//we fetch one line
         $stmt->closeCursor();
-
     ?>
     <div class="col-12 col-lg-6">
         <div class='row border perso_bgGreen border-dark rounded-lg m-2 align-items-center perso_bgRose' style="height:200px;">

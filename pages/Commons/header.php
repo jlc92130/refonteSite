@@ -25,7 +25,7 @@
         <?php include('../Commons/menu.php') ?>
       </div>
       <div class="col-2 text-right pt-1 pr-4 ">
-        Les chatons 
+        ALC 
       </div>
     </div>
   </header> 
