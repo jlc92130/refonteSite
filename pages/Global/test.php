@@ -30,9 +30,27 @@ require_once "pdo.php";
                 <img src='../../src/img/Animaux/<?php echo $image['url_image'] ?>' class="img-thumbnail" style="max-height:180px;" alt="<?php echo $image['libelle_image'] ?>" />
             </div>
             <div class="col-2 border-left border-right border-dark text-center">
-                <img src='../../src/img/Autres/icones/ChienOk.png' class="img-fluid m-1" style="width:50px;" alt="chienOk" />
-                <img src='../../src/img/Autres/icones/ChatOk.png' class="img-fluid m-1" style="width:50px;" alt="chatOk" />
-                <img src='../../src/img/Autres/icones/BabyOk.png' class="img-fluid m-1" style="width:50px;" alt="bayOk" />
+                <?php
+                    $iconeChien = ""; 
+                    if ($animal['ami_chien'] === "oui") $iconeChien = "chienOK";
+                    elseif ($animal['ami_chien'] === "non") $iconeChien = "chienBar";
+                    else $iconeChien = "chienQuest";
+                ?>
+                    <img src='../../src/img/Autres/icones/<?php echo $iconeChien ?>.png' class="img-fluid m-1" style="width:50px;" alt="<?php echo $iconeChien ?>" />
+                <?php
+                    $iconeChat = ""; 
+                    if ($animal['ami_chat'] === "oui")  $iconeChat = "chatOK";
+                    elseif ($animal['ami_chat'] === "non")  $iconeChat = "chatBar";
+                    else $iconeChat = "chatQuest";
+                ?>
+                    <img src='../../src/img/Autres/icones/<?php echo $iconeChat ?>.png' class="img-fluid m-1" style="width:50px;" alt="<?php echo $iconeChat ?>" />
+                <?php
+                    $iconeBaby = ""; 
+                    if ($animal['ami_enfant'] === "oui")  $iconeBaby = "babyOK";
+                    elseif ($animal['ami_enfant'] === "non")  $iconeBaby = "babyBar";
+                    else $iconeBaby = "babyQuest";
+                ?>
+                    <img src='../../src/img/Autres/icones/<?php echo $iconeBaby ?>.png' class="img-fluid m-1" style="width:50px;" alt="bayOk" />
             </div>
             <div class="col-6 text-center">
                 <div class="perso_policeTitre perso_size20 mb-3"><?php echo $animal["nom_animal"] ?></div>
