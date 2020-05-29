@@ -16,10 +16,10 @@ require_once "pdo.php";
 <div class='row no-gutters'>
     <?php foreach($animaux as $animal) { 
         $stmt = $bdd->prepare('SELECT i.id_image, i.libelle_image, i.url_image, i.description_image  FROM `image` i
-        INNER JOIN contient c ON c.id_image = i.id_image
-        INNER JOIN animal a ON c.id_animal = a.id_animal
-        WHERE a.id_animal = ?
-        LIMIT 1'); // we only want one image because an animal can have many images
+            INNER JOIN contient c ON c.id_image = i.id_image
+            INNER JOIN animal a ON c.id_animal = a.id_animal
+            WHERE a.id_animal = ?
+            LIMIT 1'); // we only want one image because an animal can have many images
         $stmt->execute(array($animal['id_animal']));
         $image = $stmt->fetch(PDO::FETCH_ASSOC);//we fetch one line
         $stmt->closeCursor();
@@ -55,12 +55,25 @@ require_once "pdo.php";
             <div class="col-6 text-center">
                 <div class="perso_policeTitre perso_size20 mb-3"><?php echo $animal["nom_animal"] ?></div>
                 <div class="mb-2">Né : <?php echo $animal['date_naissance_animal'] ?></div>
+                
+                <?php
+                    $stmt = $bdd->prepare('SELECT c.id_caractere, c.libelle_caractere 
+                        FROM caractere c 
+                        INNER JOIN dispose d ON c.id_caractere = d.id_caractere
+                        INNER JOIN animal a ON a.id_animal = d.id_animal
+                        WHERE a.id_animal = ?
+                        LIMIT 3
+                        ');
+                    $stmt->execute(array($animal['id_animal']));
+                    $caracteres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $stmt->closeCursor();
+                ?>
                 <div class="my-3">
-                    <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> douce </span>
-                    <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> calme </span>
-                    <span class="badge badge-warning m-1 p-2 d-none d-md-inline"> joueuse </span>
+                    <?php foreach($caracteres as $caractere) { ?>
+                        <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> <?php echo $caractere["libelle_caractere"] ?> </span>
+                    <?php } ?>
                 </div>
-                <a href="../Global/animal.php" class="btn btn-primary">Visiter ma page </a>
+                <a href="../Global/animal.php?idAnimal=<?php echo $animal["id_animal"] ?>"  class="btn btn-primary">Visiter ma page </a>
             </div>
         </div>
     </div>
