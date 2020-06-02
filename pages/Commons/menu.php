@@ -20,9 +20,9 @@
             Pensionnaires
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php">Ils cherchent une famille</a>
-                <a class="dropdown-item perso_ColorOrangeMenu" href="#">Famille d'Accueil Longue Durée</a>
-                <a class="dropdown-item perso_ColorOrangeMenu" href="#">Les anciens</a>
+                <a id="<?php echo ID_STATUT_A_L_ADOPTION ?>" class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php?idStatut=<?php echo ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a>
+                <a id="<?php echo ID_STATUT_FALD ?>" class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php?idStatut=<?php echo ID_STATUT_FALD ?>">Famille d'Accueil Longue Durée</a>
+                <a id="<?php echo ID_STATUT_ADOPTE ?>" class="dropdown-item perso_ColorOrangeMenu" href="../Global/pensionnaire.php?idStatut=<?php echo ID_STATUT_ADOPTE ?>">Les anciens</a>
             </div>
         </li>
         <li class="nav-item dropdown">

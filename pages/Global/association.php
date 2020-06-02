@@ -37,7 +37,7 @@
 <?php echo styleTitreNiveau2('L\'équipe',COLOR_ASSO); ?>
 <div class='row align-items-center'>
     <div class="col-12 col-lg-3 text-center">
-        <img class='img-fluid' style="height: 250px" src="../../src/img/Animaux/Chats/Odin/Odin.jpg"  />
+        <img class='img-fluid' style="height: 250px" src="../../src/img/Animaux/Chat/Odin/Odin.jpg"  />
     </div>
     <div class='col-12 col-lg-9  '>
         <span class="badge badge-primary">Julie</span> : présidente<br />

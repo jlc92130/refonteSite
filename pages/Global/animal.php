@@ -1,23 +1,78 @@
-<?php include("../Commons/header.php");?>
+<?php 
+include("../Commons/header.php");
+require_once "pdo.php";
 
-<?= styleTitreNiveau1("Odin", COLOR_PENSIONNAIRE) ?>
+$bdd = connexionPDO();
+$req = "SELECT * FROM animal WHERE id_animal = ?";
+$stmt = $bdd->prepare($req);
+$stmt->execute(array($_GET['idAnimal']));
+$animal = $stmt->fetch(PDO::FETCH_ASSOC);
+$stmt->closeCursor();
+// on selection l image de l'animal
+$stmt = $bdd->prepare('SELECT i.id_image, i.libelle_image, i.url_image, i.description_image  FROM `image` i
+    INNER JOIN contient c ON c.id_image = i.id_image
+    INNER JOIN animal a ON c.id_animal = a.id_animal
+    WHERE a.id_animal = ?
+    '); // we fetch all the images for one animal 
+$stmt->execute(array($_GET['idAnimal']));
+$images = $stmt->fetchAll(PDO::FETCH_ASSOC);//we fetch all the lines
+$stmt->closeCursor();
+?>
 
-<div class='row border border-dark perso_bgGreen rounded-lg m-2 align-items-center'>
+<?= styleTitreNiveau1($animal['nom_animal'], COLOR_PENSIONNAIRE) ?>
+
+<div class='row border border-dark <?php echo ($animal["sexe"] == 1) ? "perso_bgGreen" : "perso_bgPink"; ?> rounded-lg m-2 align-items-center'>
     <div class="col p-2 text-center">
-        <img src='../../src/img/Animaux/chats/Odin/Odin.jpg' class="img-thumbnail" style="max-height:180px;" alt="Odin" />
+        <img src='../../src/img/Animaux/<?php echo $images[0]['url_image'] ?>' class="img-thumbnail" style="max-height:180px;" alt=<?php echo $animal['nom_animal'] ?> />
     </div>
+
+    <?php
+        $iconeChien = ""; 
+        if ($animal['ami_chien'] === "oui") $iconeChien = "chienOK";
+        elseif ($animal['ami_chien'] === "non") $iconeChien = "chienBar";
+        else $iconeChien = "chienQuest";
+    
+        $iconeChat = ""; 
+        if ($animal['ami_chat'] === "oui")  $iconeChat = "chatOK";
+        elseif ($animal['ami_chat'] === "non")  $iconeChat = "chatBar";
+        else $iconeChat = "chatQuest";
+   
+        $iconeBaby = ""; 
+        if ($animal['ami_enfant'] === "oui")  $iconeBaby = "babyOK";
+        elseif ($animal['ami_enfant'] === "non")  $iconeBaby = "babyBar";
+        else $iconeBaby = "babyQuest";
+    ?>
+
     <div class="col-2 border-left border-right border-dark text-center">
-        <img src='../../src/img/Autres/icones/ChienOk.png' class="img-fluid m-1" style="width:50px;" alt="chienOk" />
-        <img src='../../src/img/Autres/icones/ChatOk.png' class="img-fluid m-1" style="width:50px;" alt="chatOk" />
-        <img src='../../src/img/Autres/icones/BabyOk.png' class="img-fluid m-1" style="width:50px;" alt="bayOk" />
+        <img src='../../src/img/Autres/icones/<?php echo $iconeChien ?>.png' class="img-fluid m-1" style="width:50px;" alt=<?php echo $iconeChien ?> />
+        <img src='../../src/img/Autres/icones/<?php echo $iconeChat ?>.png' class="img-fluid m-1" style="width:50px;" alt=<?php echo $iconeChat ?> />
+        <img src='../../src/img/Autres/icones/<?php echo $iconeBaby ?>.png' class="img-fluid m-1" style="width:50px;" alt=<?php echo $iconeBaby ?> />
     </div>
     <div class="col-6 col-md-4 text-center">
-        <div class="perso_policeTitre perso_size20 mb-3">Puce: XXX</div>
-        <div class="mb-2">Né : XX/XX/XXXX</div>
+        <div class="perso_policeTitre perso_size20 mb-3">Puce: <?php echo $animal['puce'] ?></div>
+        <div class="mb-2">Né : <?php echo $animal['date_naissance_animal'] ?></div>
+
+        <?php 
+            $req = 'SELECT * 
+            FROM caractere c
+            INNER JOIN dispose d ON c.id_caractere = d.id_caractere
+            INNER JOIN animal a ON a.id_animal = d.id_animal
+            WHERE a.id_animal = :idAnimal
+            LIMIT 3
+            ';
+           //$bdd = connexionPDO(); useless already done upper
+            $stmt = $bdd->prepare($req);
+            $stmt->bindValue(':idAnimal',$_GET['idAnimal']); // on aurait pu faire $animal['id_animal']
+            $stmt->execute();
+            $caracteres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmt->closeCursor();
+            //echo '<pre>';
+           //print_r($caracteres);
+        ?>
         <div class="my-3">
-            <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> douce </span>
-            <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> calme </span>
-            <span class="badge badge-warning m-1 p-2 d-none d-lg-inline"> joueuse </span>
+            <?php foreach($caracteres as $caractere) { ?>
+                <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> <?php echo $caractere['libelle_caractere'] ?> </span>
+            <?php } ?>
         </div>
     </div>
     <div class="col-12 col-md-4">
@@ -27,49 +82,43 @@
     </div>
 </div>
 
+
 <div class="row align-items-center no-gutters">
-    <div class="col-12 col-md-6">
+    <div class="col-12 col-md-6" >
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner text-center">
-                <div class="carousel-item active">
-                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin1.jpg" style="max-width:70%"  alt="Odin">
+            <div class="carousel-inner">
+                <?php foreach($images as $key=>$image) { ?>
+                <div class="carousel-item <?php echo ($key === 0) ? 'active':'' ?> ">
+                    <img src="../../src/img/Animaux/<?php echo $image['url_image'] ?>" class="img-thumbnail" style=" height:400px;width:400px" alt="<?= $image['libelle_image']?>">
                 </div>
-                <div class="carousel-item">
-                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin2.jpg" style="max-width:70%"  alt="Odin">
-                </div>
-                <div class="carousel-item">
-                    <img class="img-thumbnail" src="../../src/img/Animaux/chats/Odin/Odin3.jpg" style="max-width:70%"  alt="Odin">
-                </div>
+                <?php } ?>
             </div>
-        </div>
+        </div>       
     </div>
     
     <div class="col-12 col-md-6">
         <div>  
             <?= styleTitreNiveau2("Qui suis-je ?", COLOR_PENSIONNAIRE) ?>
-            ODIN est un chaton de 4 semaines,310 gr atteint d'un herpès, notre vétérinaire a dû lui faire une micro-anesthésie pour le soigner tellement il avait mal... Nous allons tenter le tout pour le tout pour le sauver mais voilà il part de loin et gardera sans doute des séquelles s'il s en sort. Il a des soins lourds et douloureux minimum 6 fois par jour. Il a vraiment besoin de vos ondes positives.
-            <br/><br/>
-            Vous pouvez suivre son "parcours" dans la section des actualités
+            <?php
+                echo $animal['description_animal'];
+            ?>
         </div>
         <hr />
         <div>
             <img src="../../src/img/Autres/icones/IconeAdopt.png" alt="" width="50" height="50" class="d-block mx-auto">
-            Odin est la mascotte de l'association et est désormais dans sa famille pour la vie ! <br/><br/>
-            Donc après discussion avec les membres fondateurs de l association, et surtout avec la proposition d Emmy 
-            (notre secrétaire) de le prendre en famille d accueil longue durée MERCI à toi
+            <?php echo $animal['adoption_description_animal']  ?>
         </div>
         <hr />
         <div>
             <img src="../../src/img/Autres/icones/oeil.jpg" alt="" width="50" height="50" class="d-block mx-auto">
-            Odin se trouve sur le secteur de Dijon. Pas de co-voiturage possible.
+            <?php echo $animal['localisation_description_animal']  ?>
         </div>
         <hr />
         <div>
             <img src="../../src/img/Autres/icones/iconeContrat.png" alt="" width="50" height="50" class="d-block mx-auto">
-            Nous vous demandons de bien réfléchir aux engagements que vous allez devoir prendre envers ce petit coeur : il devra vous accompagner dans vos changements de vie pendant les 15 ans minimum à venir 🙂.<br/> Il faudra également pouvoir subvenir à ses besoins ( nourriture, soins vétérinaire etc ) 
-            Un animal n est pas un jouet.
+            <?php echo $animal['engagement_description_animal']  ?>
         </div>
     </div>
-</div>
+</div>    
 
 <?php include("../Commons/footer.php"); ?>

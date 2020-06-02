@@ -10,7 +10,7 @@
     <div class="carousel-item active">
       <div class='row nogutters border rounded overflow-hidden mb-4'>  
         <div class='col-12 col-md-auto text-center'>
-          <img src="../../src/img/Animaux/Chats/Odin/Odin.jpg" style="height:250px;" alt="photo de Odin">
+          <img src="../../src/img/Animaux/Chat/Odin/Odin.jpg" style="height:250px;" alt="photo de Odin">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="perso_ColorRoseMenu perso_textShadow">Odin</h3>
@@ -27,7 +27,7 @@
         <div class="carousel-item">
       <div class='row no-gutters border rounded overflow-hidden mb-4'>  
         <div class='col-12 col-md-auto text-center'>
-          <img src="../../src/img/Animaux/Chats/Sam/Sam.jpg" style="height:250px;" alt="photo de Sam">
+          <img src="../../src/img/Animaux/Chat/Sam/Sam.jpg" style="height:250px;" alt="photo de Sam">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="perso_ColorVertMenu perso_textShadow">Sam</h3>
@@ -66,7 +66,7 @@
   <div class='col-6 mt-3'>
     <div class="row no-gutters border perso_bgGreen rounded mb-4">
       <div class='col-auto d-none d-lg-block'>
-        <img src="../../src/img/Animaux/Chats/Odin/Odin.jpg" style="height:150px;" alt="photo de Odin">
+        <img src="../../src/img/Animaux/Chat/Odin/Odin.jpg" style="height:150px;" alt="photo de Odin">
       </div>
       <div class="col p-3 d-flex flex-column position-static">
         <h3 class="mb-0 perso_ColorRoseMenu">Doyen Odin</h3>
@@ -78,7 +78,7 @@
   <div class='col-6 mt-3'>
     <div class="row no-gutters perso_bgGreen border rounded mb-4">
       <div class="col-auto d-none d-lg-block" >
-       <img src="../../src/img/Animaux/Chats/Sam/Sam.jpg" style="height:150px;" alt="photo de Sam">
+       <img src="../../src/img/Animaux/Chat/Sam/Sam.jpg" style="height:150px;" alt="photo de Sam">
       </div>
       <div class="col p-3 d-flex flex-column position-static" >
       <h3 class="mb-0 perso_ColorVertMenu">Notre nouvelle</h3>

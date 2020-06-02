@@ -1,5 +1,6 @@
+<?php require_once "../../utile/config.php";  ?>
 <?php include('../../utile/formatage.php'); ?>
-<?php include('../../utile/config.php'); ?>
+
 <!DOCTYPE html> 
 <html lang="en">
 <head>
@@ -7,9 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../../design/css/default.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-    
+
 </head>
 <body>
 <div class="container p-0 mt-2 rounded perso_shadow" >

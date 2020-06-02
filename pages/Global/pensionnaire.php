@@ -1,18 +1,27 @@
 <?php
 include("../Commons/header.php");
-require_once "config.php";
+
 require_once "pdo.php";
 
 
     $bdd = connexionPDO();
-    $stmt = $bdd->prepare("SELECT * FROM animal ");
-    $stmt->execute();
+    $req = "SELECT * FROM animal WHERE id_statut = ? ";
+    if ((int) $_GET['idStatut'] === ID_STATUT_ADOPTE) {
+        $req .= "or id_statut =".ID_STATUT_MORT;
+    }
+    $stmt = $bdd->prepare($req);
+    $stmt->execute(array($_GET['idStatut']));
     $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
-    
-?>
-<?= styleTitreNiveau1("Ils cherchent une famille", COLOR_PENSIONNAIRE) ?>
 
+ if ( (int) $_GET['idStatut'] === 1) {
+    echo styleTitreNiveau1( TITRE_ANIMAL_ATTENTE , COLOR_PENSIONNAIRE); 
+ } elseif ( (int) $_GET['idStatut'] === 3) {
+    echo styleTitreNiveau1( TITRE_ANIMAL_FALD , COLOR_PENSIONNAIRE); 
+ } else {
+    echo styleTitreNiveau1( TITRE_ANIMAL_ANCIEN , COLOR_PENSIONNAIRE);
+ }
+ ?>
 <div class='row no-gutters'>
     <?php foreach($animaux as $animal) { 
         $stmt = $bdd->prepare('SELECT i.id_image, i.libelle_image, i.url_image, i.description_image  FROM `image` i
@@ -25,9 +34,12 @@ require_once "pdo.php";
         $stmt->closeCursor();
     ?>
     <div class="col-12 col-lg-6">
-        <div class='row border perso_bgGreen border-dark rounded-lg m-2 align-items-center perso_bgRose' style="height:200px;">
+        <div class='row border border-dark rounded-lg m-2 align-items-center
+        <?php echo ($animal["sexe"] == 1) ? "perso_bgGreen" : "perso_bgPink";
+        ?>'
+        style="height:200px;">
             <div class="col p-2 text-center">
-                <img src='../../src/img/Animaux/<?php echo $image['url_image'] ?>' class="img-thumbnail" style="max-height:180px;" alt="<?php echo $image['libelle_image'] ?>" />
+                <img src='../../src/img/Animaux/<?php echo $image['url_image'] ?>' class="img-thumbnail" style="max-height:180px" alt="<?php echo $image['libelle_image'] ?>" />
             </div>
             <div class="col-2 border-left border-right border-dark text-center">
                 <?php
