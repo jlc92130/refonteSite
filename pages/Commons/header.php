@@ -1,5 +1,5 @@
 <?php require_once "../../utile/config.php";  ?>
-<?php include('../../utile/formatage.php'); ?>
+<?php require_once '../../utile/formatage.php'; ?>
 
 <!DOCTYPE html> 
 <html lang="en">

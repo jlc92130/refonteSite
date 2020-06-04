@@ -71,7 +71,7 @@ $stmt->closeCursor();
         ?>
         <div class="my-3">
             <?php foreach($caracteres as $caractere) { ?>
-                <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> <?php echo $caractere['libelle_caractere'] ?> </span>
+                <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> <?php echo ($animal['sexe'])? $caractere['libelle_caractere_m']:$caractere['libelle_caractere_f'] ?> </span>
             <?php } ?>
         </div>
     </div>
