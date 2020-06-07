@@ -1,4 +1,7 @@
-<?php include("../../views/header.php");?>
+<?php 
+ob_start();
+?>
+
 
 <?= styleTitreNiveau1("Donnations", COLOR_CONTACT) ?>
 
@@ -38,7 +41,7 @@
     </p>
     <p class='pl-5'>
         Pour faire une <span class="badge badge-warning">donation de bien</span>, vous pouvez utiliser le 
-        <a href="contact.php">
+        <a href="?page=contact">
             <span class="badge badge-primary">formulaire de contact</span>
         </a>
         pour nous contacter <br/><br/>
@@ -58,5 +61,9 @@
     </p>
 
 
-<?php include("../../views/footer.php"); ?>
+<?php 
+$content = ob_get_clean();
+require "views/template.php" 
+?>
+           
             

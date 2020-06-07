@@ -1,9 +1,10 @@
 <?php 
-include("../Views/header.php");
+ob_start();
 ?>
+
 <div class="row align-items-center no-gutters">
     <div class="col-12 col-lg-5 p-2" >
-        <img class="img-fluid mw-100 h-auto img-thumbnail" src="../../src/img/Autres/Articles/Temperature.jpg" alt='temperature'/>
+        <img class="img-fluid mw-100 h-auto img-thumbnail" src="public/src/img/Autres/Articles/Temperature.jpg" alt='temperature'/>
     </div>
     <div class="col-12 col-lg-7 p-2" >
         <?= styleTitreNiveau1("Attention aux tempèratures !", COLOR_CONSEILS) ?>
@@ -27,6 +28,7 @@ include("../Views/header.php");
 </div>
 
 <?php 
-
-include("../Views/footer.php"); 
+$content = ob_get_clean();
+require "views/template.php" 
 ?>
+           

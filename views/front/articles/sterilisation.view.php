@@ -1,10 +1,10 @@
 <?php 
-include("../Views/header.php");
+ob_start();
 ?>
 
 <div class="row no-gutters">
         <div class="align-items-center col-12 col-lg-4 p-2" >
-            <img class="img-fluid img-thumbnail d-block mx-auto" src="../../src/img/Autres/Articles/Sterilisation2.jpg" alt='sterilisation'/>
+            <img class="img-fluid img-thumbnail d-block mx-auto" src="public/src/img/Autres/Articles/Sterilisation2.jpg" alt='sterilisation'/>
         </div>
         <div class="col-12 col-lg-8 p-2" >
             <?= styleTitreNiveau1("La stérilisation des chats !", COLOR_CONSEILS) ?>
@@ -87,8 +87,8 @@ include("../Views/header.php");
 </div>
 
 <?php 
-
-include("../Views/footer.php"); 
+$content = ob_get_clean();
+require "views/template.php" 
 ?>
-            
+           
       

@@ -1,8 +1,10 @@
-<?php include("../views/header.php"); ?>
-<?php echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>',COLOR_ASSO); ?>
+<?php 
+ob_start();
+echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>',COLOR_ASSO); 
+?>
 <div class='row align-items-center mt-5'>
     <div class="col-12 col-lg-3 text-center">
-        <img class='img-fluid' src="../../public/src/img/Autres/logo_header.png"  />
+        <img class='img-fluid' src="public/src/img/Autres/logo_header.png"  />
     </div>
     <div class='col-12 col-lg-9 '>
         <p>C'est l'histoire de 5 amies unies dans un même combat : <span class="badge badge-warning">Aimer</span>, 
@@ -28,7 +30,7 @@
             nous fassent encore et toujours écrire de <span class="badge badge-warning">BELLES HISTOIRES</span>.
         </p>
         <p>
-            <a href="../../controllers/Contact/contact.php"><button type="button" class="btn btn-primary">Rejoignez nous ! &raquo;</button></a> pour suivre nos actions et partager avec nous cette nouvelle aventure !!!!!
+            <a href="controllers/Contact/contact.php"><button type="button" class="btn btn-primary">Rejoignez nous ! &raquo;</button></a> pour suivre nos actions et partager avec nous cette nouvelle aventure !!!!!
         </p>
     </div>
 </div>
@@ -37,7 +39,7 @@
 <?php echo styleTitreNiveau2('L\'équipe',COLOR_ASSO); ?>
 <div class='row align-items-center'>
     <div class="col-12 col-lg-3 text-center">
-        <img class='img-fluid' style="height: 250px" src="../../public/src/img/Animaux/Chat/Odin/Odin.jpg"  />
+        <img class='img-fluid' style="height: 250px" src="public/src/img/Animaux/Chat/Odin/Odin.jpg"  />
     </div>
     <div class='col-12 col-lg-9  '>
         <span class="badge badge-primary">Julie</span> : présidente<br />
@@ -49,4 +51,7 @@
     </div>
 </div>
 
-<?php include('../../views/footer.php'); ?>
+<?php 
+$content = ob_get_clean();
+require "views/template.php"
+?>

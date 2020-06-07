@@ -23,25 +23,26 @@ isset($_POST['captcha']) && !empty($_POST['captcha'])
     }
 }
 ?>
-<?php include("../../views/header.php");?>
+
+<?php 
+ob_start();
+?>
+
+
+
 
 <?= styleTitreNiveau1("Contact", COLOR_CONTACT) ?>
 
-<?= styleTitreNiveau3("Suivez-nous :", COLOR_CONTACT);?>
-<p class="pl-5">
-    <a href="https://www.facebook.com" target=_blank><img src="../../src/img/Autres/icones/facebook.png" width="30px" alt="Facebook"/></a>
-    Suivez-nous sur facebook et participez à l'aventure de Nos Amis Nos Animaux : 
-    <a href="https://www.facebook.com/leschatons/" target=_blank><span class="badge badge-pill badge-primary">Notre facebook</span></a>
-</p>
+ 
 
 <?= styleTitreNiveau3("Contactez-nous :", COLOR_CONTACT) ?>
 <div class="pl-5">
     <p>
-        <img src="../../src/img/Autres/icones/courrier.png" width="30px" alt="courrier"/>
+        <img src="public/src/img/Autres/icones/courrier.png" width="30px" alt="courrier"/>
         Par courrier : Hameau d'Orches, 21340 Baubigny, France
     </p>
     <p>
-        <img src="../../src/img/Autres/icones/mail.png" width="30px" alt="mail"/>
+        <img src="public/src/img/Autres/icones/mail.png" width="30px" alt="mail"/>
         Par mail : <a href="mailto:associationleschatons@gmail.com">associationleschatons@gmail.com</a>
     </p>
     <p>
@@ -80,5 +81,8 @@ isset($_POST['captcha']) && !empty($_POST['captcha'])
     <input type="submit" class="btn btn-primary mx-auto d-block" value="Valider" />
 </form>
 
-<?php include("../../views/footer.php"); ?>
+<?php 
+$content = ob_get_clean();
+require "views/template.php" 
+?>
             

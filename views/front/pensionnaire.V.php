@@ -1,7 +1,7 @@
 <?php
     ob_start();
 
-    echo styleTitreNiveau1( TITRE_ANIMAL_ANCIEN , COLOR_PENSIONNAIRE);
+    echo styleTitreNiveau1( TITRE_ANIMAL_FALD , COLOR_PENSIONNAIRE);
  ?>
 <div class='row no-gutters'>
     
@@ -56,5 +56,5 @@
 
 <?php
 $content = ob_get_clean();
-require "template.php" 
+require "views/template.php" 
 ?> 

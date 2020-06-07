@@ -1,6 +1,7 @@
-<?php include('../views/header.php'); ?>
-
-<?php echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO ) ?>
+<?php 
+ob_start();
+echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
+ ?>
 <div id="carouselExampleIndicators" class="carousel slide perso_bgGreen" data-ride="carousel">
   <ol class="carousel-indicators">
     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active bg-dark"></li>
@@ -54,11 +55,11 @@
 
 <div class='row'>
   <div class='col-6 mt-3'>  
-    <?php $txt = "<img src='../../src/img/Autres/icones/journal.png' alt='logo News'/>Nouvelles des adoptés";
+    <?php $txt = "<img src='public/src/img/Autres/icones/journal.png' alt='logo News'/>Nouvelles des adoptés";
       echo  styleTitreNiveau2($txt,COLOR_ACTUS ); ?>
   </div>
   <div class='col-6 mt-3'>  
-    <?php $txt = "<img src='../../src/img/Autres/icones/journal.png' alt='logo News'/>Evénements & Actions";
+    <?php $txt = "<img src='public/src/img/Autres/icones/journal.png' alt='logo News'/>Evénements & Actions";
       echo  styleTitreNiveau2($txt,COLOR_PENSIONNAIRE ); ?>
   </div>
 </div>
@@ -93,4 +94,7 @@
 </div>
 
 
-<?php include('../views/footer.php'); ?>
+<?php 
+$content = ob_get_clean();
+require "views/template.php"
+?>
