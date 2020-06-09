@@ -41,4 +41,27 @@ function getAllCaracters($animal) {
     $stmt->closeCursor();
     return $caracteres;
 }
+function getAnimalFromIdAnimalBD($idAnimal) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM animal WHERE id_animal = ?";
+    $stmt = $bdd->prepare($req);
+    $stmt->execute(array($idAnimal));
+    $animal = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $animal;
+}
+
+function getImagesFromAnimal($idAnimal) {
+    $bdd = connexionPDO();
+    $stmt = $bdd->prepare('SELECT i.id_image, i.libelle_image, i.url_image, i.description_image  FROM `image` i
+    INNER JOIN contient c ON c.id_image = i.id_image
+    INNER JOIN animal a ON c.id_animal = a.id_animal
+    WHERE a.id_animal = ?
+    '); // we fetch all the images for one animal 
+    $stmt->execute(array($idAnimal));
+    $images = $stmt->fetchAll(PDO::FETCH_ASSOC);//we fetch all the lines
+    $stmt->closeCursor();
+    return $images;
+}
+
 

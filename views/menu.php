@@ -22,9 +22,9 @@
             Pensionnaires
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a id="<?php echo ID_STATUT_A_L_ADOPTION ?>" class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idstatut=<?php echo ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a>
-                <a id="<?php echo ID_STATUT_FALD ?>" class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idstatut=<?php echo ID_STATUT_FALD ?>">Famille d'Accueil Longue Durée</a>
-                <a id="<?php echo ID_STATUT_ADOPTE ?>" class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idstatut=<?php echo ID_STATUT_ADOPTE ?>">Les anciens</a>
+                <a id="<?php echo ID_STATUT_A_L_ADOPTION ?>" class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idStatut=<?php echo ID_STATUT_A_L_ADOPTION ?>">Ils cherchent une famille</a>
+                <a id="<?php echo ID_STATUT_FALD ?>" class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idStatut=<?php echo ID_STATUT_FALD ?>">Famille d'Accueil Longue Durée</a>
+                <a id="<?php echo ID_STATUT_ADOPTE ?>" class="dropdown-item perso_ColorOrangeMenu" href="?page=pensionnaires&idStatut=<?php echo ID_STATUT_ADOPTE ?>">Les anciens</a>
             </div>
         </li>
         <li class="nav-item dropdown">
@@ -32,7 +32,7 @@
             Actus
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorVertMenu" href="Global/actus.php">Nouvelles des adoptés</a>
+                <a class="dropdown-item perso_ColorVertMenu" href="?page=actus">Nouvelles des adoptés</a>
                 <a class="dropdown-item perso_ColorVertMenu" href="#">Evénements</a>
                 <a class="dropdown-item perso_ColorVertMenu" href="#">Nos actions au quotidien</a>
             </div>

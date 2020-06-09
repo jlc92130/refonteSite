@@ -56,7 +56,7 @@ ob_start();
     <p class='pl-5'>
         Vous avez une <span class="badge badge-warning">question</span>, Contactez nous par mail<br/> 
         <p class='text-center'>
-            06 10 59 94 71 - <a href="mailto:associationnosamisnosanimaux@gmail.com">associationnosamisnosanimaux@gmail.com</a>
+             <a href="mailto:associationnosamisnosanimaux@gmail.com">associationnosamisnosanimaux@gmail.com</a>
         </p>
     </p>
 

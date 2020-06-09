@@ -15,8 +15,8 @@ if (isset($_GET['page'])) {
     if ($_GET['page'] === "partenaires") {
         getPartenaires();
     }
-    if ($_GET['page'] === "accueil") {
-        getAccueil();
+    if ($_GET['page'] === "actus") {
+        getActu();
     }
     if ($_GET['page'] === "contact") {
         getContact();
@@ -41,6 +41,9 @@ if (isset($_GET['page'])) {
     }
     if ($_GET['page'] === "educateur") {
         getEducateur();
+    }
+    if ($_GET['page'] === "animal") {
+        getAnimal();
     }
 }
 else {

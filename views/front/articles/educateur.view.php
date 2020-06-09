@@ -11,7 +11,7 @@ ob_start();
             <?= styleTitreNiveau1("Education canine", COLOR_CONSEILS) ?>
             <div class="mt-5">
                 Nous connaissons des éducateurs canin employant l'éducation positive. <br />
-                Nous <a href="views/front/contact/contact.view.php"><button type="button" class="btn btn-primary">Contacter ! &raquo;</button></a> via notre formulaire  !
+                Nous <a href="?page=contact"><button type="button" class="btn btn-primary">Contacter ! &raquo;</button></a> via notre formulaire  !
             </div>
         </div>
     </div>

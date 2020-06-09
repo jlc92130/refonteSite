@@ -8,7 +8,7 @@ function getPensionnaires() {
    $title = "Page des pensionnaires";
    $description = "C'est la page des pensionnaires";
 
-   $_GET['idStatut'] = 2;
+  
    $animaux = getAnimalFromStatut($_GET['idStatut']);
 
    if ( (int) $_GET['idStatut'] === 1) {
@@ -97,4 +97,21 @@ function getEducateur() {
    $title = "Page des educateurs";
    require_once "views/front/articles/educateur.view.php";
    
+}
+
+function getActu() {
+   $description = "Page nouvelles des adoptés";
+   $title = "Page des adoptes";
+   require_once "views/front/actu.view.php";
+   
+}
+
+function getAnimal() {
+   $animal = getAnimalFromIdAnimalBD($_GET['idAnimal']);
+   $description = "Page de". $animal['nom_animal'];
+   $title = "Page de". $animal['nom_animal'];
+   $images = getImagesFromAnimal($_GET['idAnimal']);
+   $caracteres = getAllCaracters($_GET['idAnimal']);
+   require_once "views/front/animal.view.php";
+    
 }

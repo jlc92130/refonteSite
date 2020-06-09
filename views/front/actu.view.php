@@ -1,10 +1,10 @@
-<?php include("../views/header.php");?>
+<?php ob_start();  ?>
 
 <?= styleTitreNiveau1("Ils cherchent une famille", COLOR_ACTUS) ?>
 <?= styleTitrePost('Odin','06/2020',COLOR_ACTUS) ?>
 <div class="row no-gutters align-items-center mt-4" style="min-height:300px;">
     <div class='col-12 col-md-3 text-center'>
-        <img src="../../src/img/Animaux/Chats/Odin/Odin.jpg" style="max-height:280px;" alt="Odin">
+        <img src="public/src/img/Animaux/chat/Odin/Odin.jpg" style="max-height:280px;" alt="Odin">
     </div>
     <div class="col-12 col-md-9">
         Un petit coucou de notre doyen ODIN (15ans) en famille d accueil longue durée chez notre trésorière.<br/>
@@ -19,7 +19,7 @@
 <?= styleTitrePost('Sam','03/2020',COLOR_ACTUS) ?>
 <div class='row no-gutters align-items-center' style="min-height:300px;">
     <div class="col-12 col-md-3 text-center">
-    <img src="../../src/img/Animaux/Chats/Sam/Sam.jpg" style="max-height:280px;" alt="Sam">
+        <img src="public/src/img/Animaux/chat/Sam/Sam.jpg" style="max-height:280px;" alt="Sam">
     </div>
     <div class="col-12 col-md-9">
     Petit rappel rapide de l’histoire.<br/><br/>
@@ -43,5 +43,8 @@ Merci à TOUS pour votre confiance, à son ancienne famille qui accepte que Sam 
     </div>
 </div>
 
-<?php include("../views/footer.php"); ?>
-
+<?php
+$content = ob_get_clean();
+require "views/template.php";
+?>
+            
