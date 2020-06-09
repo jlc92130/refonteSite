@@ -30,7 +30,7 @@ echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>'
             nous fassent encore et toujours écrire de <span class="badge badge-warning">BELLES HISTOIRES</span>.
         </p>
         <p>
-            <a href="controllers/Contact/contact.php"><button type="button" class="btn btn-primary">Rejoignez nous ! &raquo;</button></a> pour suivre nos actions et partager avec nous cette nouvelle aventure !!!!!
+            <a href="?page=contact"><button type="button" class="btn btn-primary">Rejoignez nous ! &raquo;</button></a> pour suivre nos actions et partager avec nous cette nouvelle aventure !!!!!
         </p>
     </div>
 </div>
@@ -53,5 +53,5 @@ echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>'
 
 <?php 
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php";
 ?>

@@ -19,5 +19,5 @@ echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>'
 
 <?php 
 $content = ob_get_clean();
-require "views/template.php"
+require "views/commons/template.php";
 ?>

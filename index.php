@@ -4,48 +4,48 @@ require_once "controllers/frtEnd.controller.php";
 
 if (isset($_GET['page'])) {
     if ($_GET['page'] === "accueil") {
-        getAccueil();
+        getPageAccueil();
     }
     if ($_GET['page'] === "pensionnaires") {
-        getPensionnaires();
+        getPagePensionnaires();
     }
     if ($_GET['page'] === "association") {
-        getAssociation();
+        getPageAssociation();
     }
     if ($_GET['page'] === "partenaires") {
-        getPartenaires();
+        getPagePartenaires();
     }
     if ($_GET['page'] === "actus") {
-        getActu();
+        getPageActu();
     }
     if ($_GET['page'] === "contact") {
-        getContact();
+        getPageContact();
     }
     if ($_GET['page'] === "don") {
-        getDon();
+        getPageDon();
     }
     if ($_GET['page'] === "mentions") {
-        getMentions();
+        getPageMentions();
     }
     if ($_GET['page'] === "temperatures") {
-        getTemperatures();
+        getPageTemperatures();
     }
     if ($_GET['page'] === "chocolat") {
-        getChocolat();
+        getPageChocolat();
     }
     if ($_GET['page'] === "plantes") {
-        getPlantes();
+        getPagePlantes();
     }
     if ($_GET['page'] === "sterilisation") {
-        getSterilisation();
+        getPageSterilisation();
     }
     if ($_GET['page'] === "educateur") {
-        getEducateur();
+        getPageEducateur();
     }
     if ($_GET['page'] === "animal") {
-        getAnimal();
+        getPageAnimal();
     }
 }
 else {
-    getAccueil();
+    getPageAccueil();
 }
