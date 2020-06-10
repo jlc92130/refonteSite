@@ -2,50 +2,45 @@
 
 require_once "controllers/frtEnd.controller.php";
 
-if (isset($_GET['page'])) {
-    if ($_GET['page'] === "accueil") {
-        getPageAccueil();
+try {
+    if (isset($_GET['page']) && !empty($_GET['page'])) {
+        switch ($_GET['page']) {
+                case "accueil": getPageAccueil();            
+                break;
+                case "pensionnaires": getPagePensionnaires();            
+                break;
+                case "association": getPageAssociation();            
+                break;
+                case "partenaires": getPagePartenaires();           
+                break;
+                case "contact": getPageContact();         
+                break;
+                case "don": getPageDon();           
+                break;
+                case "mentions": getPageMentions();            
+                break;
+                case "temperatures": getPageTemperatures();            
+                break;
+                case "chocolat": getPageChocolat();           
+                break;
+                case "plantes": getPagePlantes();         
+                break;
+                case "sterilisation": getPageSterilisation();           
+                break;
+                case "educateur": getPageEducateur();         
+                break;
+                case "animal": getPageAnimal();           
+                break;
+                default: throw new Exception("La page n'existe pas");
+        } 
+        
+    } 
+    else {
+       getPageAccueil();
     }
-    if ($_GET['page'] === "pensionnaires") {
-        getPagePensionnaires();
     }
-    if ($_GET['page'] === "association") {
-        getPageAssociation();
-    }
-    if ($_GET['page'] === "partenaires") {
-        getPagePartenaires();
-    }
-    if ($_GET['page'] === "actus") {
-        getPageActu();
-    }
-    if ($_GET['page'] === "contact") {
-        getPageContact();
-    }
-    if ($_GET['page'] === "don") {
-        getPageDon();
-    }
-    if ($_GET['page'] === "mentions") {
-        getPageMentions();
-    }
-    if ($_GET['page'] === "temperatures") {
-        getPageTemperatures();
-    }
-    if ($_GET['page'] === "chocolat") {
-        getPageChocolat();
-    }
-    if ($_GET['page'] === "plantes") {
-        getPagePlantes();
-    }
-    if ($_GET['page'] === "sterilisation") {
-        getPageSterilisation();
-    }
-    if ($_GET['page'] === "educateur") {
-        getPageEducateur();
-    }
-    if ($_GET['page'] === "animal") {
-        getPageAnimal();
-    }
-}
-else {
-    getPageAccueil();
+catch (Exception $e) {
+    $errorMessage = $e->getMessage();
+    
+    require "views/commons/erreur.view.php";
 }
