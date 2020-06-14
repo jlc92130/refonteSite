@@ -8,28 +8,32 @@ function getPagePensionnaires() {
    $title = "Page des pensionnaires";
    $description = "C'est la page des pensionnaires";
 
+   if(isset($_GET['idStatut']) && !empty($_GET['idStatut'])) {
+      $idStat = Securite::secureHTML($_GET['idStatut']);
+      $animaux = getAnimalFromStatut($idStat);
+
+      if ( (int) $idStat === 1) {
+         echo styleTitreNiveau1( TITRE_ANIMAL_ATTENTE , COLOR_PENSIONNAIRE); 
+      } elseif ( (int) $idStat === 3) {
+         echo styleTitreNiveau1( TITRE_ANIMAL_FALD , COLOR_PENSIONNAIRE); 
+      } else {
+         echo styleTitreNiveau1( TITRE_ANIMAL_ANCIEN , COLOR_PENSIONNAIRE);
+      }
+   
+      foreach($animaux as $key=>$animal) { 
+         $image = getFirstImage($animal['id_animal']);
+         $animaux[$key]['image'] = $image;
+   
+         $caracteres = getAllCaracters($animal['id_animal']);
+         $animaux[$key]['caracteres'] = $caracteres;
+         
+      }
+      require_once "views/front/pensionnaire.V.php";
+   } 
+   else {
+      throw new Exception ("L ID du statut n'est pas renseigné");
+   }
   
-   $animaux = getAnimalFromStatut($_GET['idStatut']);
-
-   //if(isset($_GET['idStatut'] && !empty($_GET['idStatut']))) 
-
-   if ( (int) $_GET['idStatut'] === 1) {
-      echo styleTitreNiveau1( TITRE_ANIMAL_ATTENTE , COLOR_PENSIONNAIRE); 
-   } elseif ( (int) $_GET['idStatut'] === 3) {
-      echo styleTitreNiveau1( TITRE_ANIMAL_FALD , COLOR_PENSIONNAIRE); 
-   } else {
-      echo styleTitreNiveau1( TITRE_ANIMAL_ANCIEN , COLOR_PENSIONNAIRE);
-   }
-
-   foreach($animaux as $key=>$animal) { 
-      $image = getFirstImage($animal['id_animal']);
-      $animaux[$key]['image'] = $image;
-
-      $caracteres = getAllCaracters($animal['id_animal']);
-      $animaux[$key]['caracteres'] = $caracteres;
-      
-   }
-   require_once "views/front/pensionnaire.V.php";
 
 }
 
@@ -108,12 +112,19 @@ function getPageActu() {
    
 }
 
-function getPageAnimal() {
-   $animal = getAnimalFromIdAnimalBD($_GET['idAnimal']);
-   $description = "Page de". $animal['nom_animal'];
-   $title = "Page de". $animal['nom_animal'];
-   $images = getImagesFromAnimal($_GET['idAnimal']);
-   $caracteres = getAllCaracters($_GET['idAnimal']);
-   require_once "views/front/animal.view.php";
+function getPageAnimal() {  
+   if (isset($_GET['idAnimal']) && !empty($_GET['idAnimal'])) {
+      $idAn = Securite::secureHTML($_GET['idAnimal']);
+      $animal = getAnimalFromIdAnimalBD($idAn);
+      $description = "Page de". $animal['nom_animal'];
+      $title = "Page de". $animal['nom_animal'];
+      $images = getImagesFromAnimal($idAn);
+      $caracteres = getAllCaracters($idAn);
+      require_once "views/front/animal.view.php";
+   }
+   else {
+      throw new Exception ("L ID de l'animal n'est pas renseigné");
+   }
+   
     
 }

@@ -47,7 +47,7 @@
                         <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> <?php  echo ($animal['sexe'])? $caractere["libelle_caractere_m"]:$caractere["libelle_caractere_f"] ?> </span>
                     <?php } ?>
                 </div>
-                <a href="animal&idAnimal=<?php echo $animal["id_animal"] ?>"  class="btn btn-primary">Visiter ma page </a>
+                <a href="<?= URL ?>animal&idAnimal=<?php echo $animal["id_animal"] ?>"  class="btn btn-primary">Visiter ma page </a>
             </div>
         </div>
     </div>
