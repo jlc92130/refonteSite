@@ -5,7 +5,7 @@ ob_start();
 
 <div class="row no-gutters">
         <div class="col-12 col-md-5 p-2" >
-            <img class="img-fluid img-thumbnail" src="public/src/img/Autres/Articles/imageEduc.jpg" alt='educateur'/>
+            <img class="img-fluid img-thumbnail" src="<?= URL?>public/src/img/Autres/Articles/imageEduc.jpg" alt='educateur'/>
         </div>
         <div class="col-12 col-md-7 p-2" >
             <?= styleTitreNiveau1("Education canine", COLOR_CONSEILS) ?>

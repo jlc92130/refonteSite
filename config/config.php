@@ -21,7 +21,7 @@ const ID_STATUT_MORT = 4;
 const TITRE_ANIMAL_ATTENTE = 'Ils cherchent une famille';
 const TITRE_ANIMAL_FALD = 'Famille d\'Accueil Longue Durée';
 const TITRE_ANIMAL_ANCIEN = 'Les anciens';
-
-
+// creation of a constant to put the url we want absolute path
+define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS'])?"https":"http")."://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
     
 ?>

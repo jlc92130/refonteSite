@@ -2,7 +2,7 @@
 <?= styleTitreNiveau1("Erreur", COLOR_CONSEILS); ?>
 
 <div class="alert alert-danger text-center" role="alert">
-<?php echo $errorMessage; ?>
+<?php echo $errorMessage ?>
 </div>
 
 <?php 

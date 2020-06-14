@@ -7,7 +7,7 @@ ob_start();
     $txt = 'Attention le chocolat est extrémement <span class="badge badge-danger">dangereux</span> pour les chients et chats !';
     echo styleTitreNiveau1($txt, COLOR_CONSEILS) 
     ?>
-    <img class="img-fluid img-thumbnail" src="public/src/img/Autres/Articles/Chocolat.jpg" alt='chocolat'/>
+    <img class="img-fluid img-thumbnail" src="<?= URL?>public/src/img/Autres/Articles/Chocolat.jpg" alt='chocolat'/>
 </div>
 
 <?php 

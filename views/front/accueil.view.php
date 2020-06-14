@@ -12,7 +12,7 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
     <div class="carousel-item active">
       <div class='row nogutters border rounded overflow-hidden mb-4'>  
         <div class='col-12 col-md-auto text-center'>
-          <img src="public/src/img/Animaux/Chat/Odin/Odin.jpg" style="height:250px;" alt="photo de Odin">
+          <img src="<?= URL?>public/src/img/Animaux/Chat/Odin/Odin.jpg" style="height:250px;" alt="photo de Odin">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="perso_ColorRoseMenu perso_textShadow">Odin</h3>
@@ -29,7 +29,7 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
         <div class="carousel-item">
       <div class='row no-gutters border rounded overflow-hidden mb-4'>  
         <div class='col-12 col-md-auto text-center'>
-          <img src="public/src/img/Animaux/Chat/Sam/Sam.jpg" style="height:250px;" alt="photo de Sam">
+          <img src="<?= URL?>public/src/img/Animaux/Chat/Sam/Sam.jpg" style="height:250px;" alt="photo de Sam">
         </div>
         <div class="col p-4 d-flex flex-column position-static">
           <h3 class="perso_ColorVertMenu perso_textShadow">Sam</h3>
@@ -55,11 +55,11 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
 
 <div class='row'>
   <div class='col-6 mt-3'>  
-    <?php $txt = "<img src='public/src/img/Autres/icones/journal.png' alt='logo News'/>Nouvelles des adoptés";
+    <?php $txt = "<img src='public/src/img/Autres/icones/journal.png' alt='logo News'/> Nouvelles des adoptés";
       echo  styleTitreNiveau2($txt,COLOR_ACTUS ); ?>
   </div>
   <div class='col-6 mt-3'>  
-    <?php $txt = "<img src='public/src/img/Autres/icones/journal.png' alt='logo News'/>Evénements & Actions";
+    <?php $txt = "<img src='<?= URL ?>public/src/img/Autres/icones/action.png' alt='logo News'/> Evénements & Actions";
       echo  styleTitreNiveau2($txt,COLOR_PENSIONNAIRE ); ?>
   </div>
 </div>
@@ -68,7 +68,7 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
   <div class='col-6 mt-3'>
     <div class="row no-gutters border perso_bgGreen rounded mb-4">
       <div class='col-auto d-none d-lg-block'>
-        <img src="public/src/img/Animaux/Chat/Odin/Odin.jpg" style="height:150px;" alt="photo de Odin">
+        <img src="<?= URL?>public/src/img/Animaux/Chat/Odin/Odin.jpg" style="height:150px;" alt="photo de Odin">
       </div>
       <div class="col p-3 d-flex flex-column position-static">
         <h3 class="mb-0 perso_ColorRoseMenu">Doyen Odin</h3>
@@ -80,7 +80,7 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
   <div class='col-6 mt-3'>
     <div class="row no-gutters perso_bgGreen border rounded mb-4">
       <div class="col-auto d-none d-lg-block" >
-       <img src="public/src/img/Animaux/Chat/Sam/Sam.jpg" style="height:150px;" alt="photo de Sam">
+       <img src="<?= URL?>public/src/img/Animaux/Chat/Sam/Sam.jpg" style="height:150px;" alt="photo de Sam">
       </div>
       <div class="col p-3 d-flex flex-column position-static" >
       <h3 class="mb-0 perso_ColorVertMenu">Notre nouvelle</h3>

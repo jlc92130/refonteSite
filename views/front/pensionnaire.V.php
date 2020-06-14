@@ -12,7 +12,7 @@
         ?>'
         style="height:200px;" >
             <div class="col p-2 text-center">
-                <img src='public/src/img/Animaux/<?php echo $animal['image']['url_image'] ?>' class="img-thumbnail" style="max-height:180px" alt="<?php echo $animal['image']['libelle_image'] ?>" />
+                <img src='<?= URL?>public/src/img/Animaux/<?php echo $animal['image']['url_image'] ?>' class="img-thumbnail" style="max-height:180px" alt="<?php echo $animal['image']['libelle_image'] ?>" />
             </div>
             <div class="col-2 border-left border-right border-dark text-center">
                 <?php
@@ -21,14 +21,14 @@
                     elseif ($animal['ami_chien'] === "non") $iconeChien = "chienBar";
                     else $iconeChien = "chienQuest";
                 ?>
-                    <img src='public/src/img/Autres/icones/<?php echo $iconeChien ?>.png' class="img-fluid m-1" style="width:50px;" alt="<?php echo $iconeChien ?>" />
+                    <img src='<?= URL?>public/src/img/Autres/icones/<?php echo $iconeChien ?>.png' class="img-fluid m-1" style="width:50px;" alt="<?php echo $iconeChien ?>" />
                 <?php
                     $iconeChat = ""; 
                     if ($animal['ami_chat'] === "oui")  $iconeChat = "chatOK";
                     elseif ($animal['ami_chat'] === "non")  $iconeChat = "chatBar";
                     else $iconeChat = "chatQuest";
                 ?>
-                    <img src='public/src/img/Autres/icones/<?php echo $iconeChat ?>.png' class="img-fluid m-1" style="width:50px;" alt="<?php echo $iconeChat ?>" />
+                    <img src='<?= URL?>public/src/img/Autres/icones/<?php echo $iconeChat ?>.png' class="img-fluid m-1" style="width:50px;" alt="<?php echo $iconeChat ?>" />
                 <?php
                     $iconeBaby = ""; 
                     if ($animal['ami_enfant'] === "oui")  $iconeBaby = "babyOK";
@@ -47,7 +47,7 @@
                         <span class="badge badge-warning m-1 p-2 d-none d-sm-inline"> <?php  echo ($animal['sexe'])? $caractere["libelle_caractere_m"]:$caractere["libelle_caractere_f"] ?> </span>
                     <?php } ?>
                 </div>
-                <a href="?page=animal&idAnimal=<?php echo $animal["id_animal"] ?>"  class="btn btn-primary">Visiter ma page </a>
+                <a href="animal&idAnimal=<?php echo $animal["id_animal"] ?>"  class="btn btn-primary">Visiter ma page </a>
             </div>
         </div>
     </div>

@@ -4,7 +4,7 @@ ob_start();
 
 <div class="row align-items-center no-gutters">
     <div class="col-12 col-lg-5 p-2" >
-        <img class="img-fluid mw-100 h-auto img-thumbnail" src="public/src/img/Autres/Articles/Temperature.jpg" alt='temperature'/>
+        <img class="img-fluid mw-100 h-auto img-thumbnail" src="<?= URL?>public/src/img/Autres/Articles/Temperature.jpg" alt='temperature'/>
     </div>
     <div class="col-12 col-lg-7 p-2" >
         <?= styleTitreNiveau1("Attention aux tempèratures !", COLOR_CONSEILS) ?>

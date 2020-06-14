@@ -38,11 +38,11 @@ ob_start();
 <?= styleTitreNiveau3("Contactez-nous :", COLOR_CONTACT) ?>
 <div class="pl-5">
     <p>
-        <img src="public/src/img/Autres/icones/courrier.png" width="30px" alt="courrier"/>
+        <img src="<?= URL?>public/src/img/Autres/icones/courrier.png" width="30px" alt="courrier"/>
         Par courrier : Hameau d'Orches, 21340 Baubigny, France
     </p>
     <p>
-        <img src="public/src/img/Autres/icones/mail.png" width="30px" alt="mail"/>
+        <img src="<?= URL?>public/src/img/Autres/icones/mail.png" width="30px" alt="mail"/>
         Par mail : <a href="mailto:associationleschatons@gmail.com">associationleschatons@gmail.com</a>
     </p>
     <p>

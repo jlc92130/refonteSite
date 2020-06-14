@@ -11,6 +11,8 @@ function getPagePensionnaires() {
   
    $animaux = getAnimalFromStatut($_GET['idStatut']);
 
+   //if(isset($_GET['idStatut'] && !empty($_GET['idStatut']))) 
+
    if ( (int) $_GET['idStatut'] === 1) {
       echo styleTitreNiveau1( TITRE_ANIMAL_ATTENTE , COLOR_PENSIONNAIRE); 
    } elseif ( (int) $_GET['idStatut'] === 3) {
