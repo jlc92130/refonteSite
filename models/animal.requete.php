@@ -3,12 +3,13 @@ require_once "pdo.php";
 
 function getAnimalFromStatut($idStatut) {
     $bdd = connexionPDO();
-    $req = "SELECT * FROM animal WHERE id_statut = ? ";
+    $req = "SELECT * FROM animal WHERE id_statut = :id_stat ";
     if ($idStatut === ID_STATUT_ADOPTE) {
-        $req .= "or id_statut =".ID_STATUT_MORT;
+        $req .= "or :id_statut =".ID_STATUT_MORT;
     }
     $stmt = $bdd->prepare($req);
-    $stmt->execute(array($idStatut));
+    $stmt->bindValue(':id_stat',$idStatut,PDO::PARAM_INT);
+    $stmt->execute();
     $animaux = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $stmt->closeCursor();
     return $animaux;

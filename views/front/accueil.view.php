@@ -1,6 +1,7 @@
 <?php 
 ob_start();
-echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
+echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO );
+
  ?>
 <div id="carouselExampleIndicators" class="carousel slide perso_bgGreen" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -59,7 +60,7 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO )
       echo  styleTitreNiveau2($txt,COLOR_ACTUS ); ?>
   </div>
   <div class='col-6 mt-3'>  
-    <?php $txt = "<img src='<?= URL ?>public/src/img/Autres/icones/action.png' alt='logo News'/> Evénements & Actions";
+    <?php $txt = "<img src='".URL."public/src/img/Autres/icones/action.png' alt='logo News'/> Evénements & Actions";
       echo  styleTitreNiveau2($txt,COLOR_PENSIONNAIRE ); ?>
   </div>
 </div>

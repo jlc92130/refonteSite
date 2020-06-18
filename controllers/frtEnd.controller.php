@@ -2,6 +2,7 @@
 require_once  "public/utile/formatage.php";
 require_once 'models/animal.requete.php';
 require_once "config/config.php";
+require_once "models/actualites.requete.php";
 
 function getPagePensionnaires() {
    
@@ -106,8 +107,18 @@ function getPageEducateur() {
 }
 
 function getPageActu() {
-   $description = "Page nouvelles des adoptés";
-   $title = "Page des adoptes";
+   $description = "Page d'actualité du site";
+   $title = "Les actualites";
+
+   $actualites = getActualiteFromBD();
+   foreach($actualites as $key => $actualite) {
+      $image = getImageActualiteFromBD($actualite['id_image']);
+     
+      //on rajoute un champs a l objet actualite
+      $actualites[$key]["image"] = $image;
+      
+   }
+   
    require_once "views/front/actu.view.php";
    
 }

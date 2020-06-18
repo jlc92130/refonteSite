@@ -21,7 +21,9 @@ const ID_STATUT_MORT = 4;
 const TITRE_ANIMAL_ATTENTE = 'Ils cherchent une famille';
 const TITRE_ANIMAL_FALD = 'Famille d\'Accueil Longue Durée';
 const TITRE_ANIMAL_ANCIEN = 'Les anciens';
-// creation of a constant to put the url we want absolute path
+//  for ex if we have localhost/jl/refonteSite/index.php/?page=actu 
+//$_SERVER[HTTP_HOST]->localhost et $_SERVER[PHP_SELF]->/jl/refonteSite/index.php
+//on obtient URL = http://localhost/jl/refonteSite/
 define("URL",str_replace("index.php","",(isset($_SERVER['HTTPS'])?"https":"http")."://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]"));
     
 ?>
