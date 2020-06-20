@@ -48,7 +48,8 @@ try {
                 case "error403": throw new Exception(" Interdiction d'acces");
                 break;
                 case "error404": 
-                //default: throw new Exception("La page n'existe pas");
+                break;
+                default: throw new Exception("La page n'existe pas");
         } 
         
     } 

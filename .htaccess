@@ -3,7 +3,9 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-#rediriger les pages  ex :  association vers index.php?page="association"
+# htaccess is in refonteSite if we have /jl/refonteSite/association it will be replace by
+# /jl/refonteSite/index.php?page=association
+# $1 is the attribute that receive association
 RewriteRule ^(.*)$ index.php?page=$1
 
 

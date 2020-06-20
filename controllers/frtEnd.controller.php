@@ -41,6 +41,8 @@ function getPagePensionnaires() {
 function getPageAccueil() {
    $description = "Page d'accueil";
    $title = "Page d'accueil";
+   $animaux = getAnimalFromStatut($idStat);
+
    require_once "views/front/accueil.view.php";
    
 }

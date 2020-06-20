@@ -12,7 +12,7 @@
         ?>'
         style="height:200px;" >
             <div class="col p-2 text-center">
-                <img src='<?= URL?>public/src/img/Animaux/<?php echo $animal['image']['url_image'] ?>' class="img-thumbnail" style="max-height:180px" alt="<?php echo $animal['image']['libelle_image'] ?>" />
+                <img src='<?= URL?>public/src/img/sites/<?php echo $animal['image']['url_image'] ?>' class="img-thumbnail" style="max-height:180px" alt="<?php echo $animal['image']['libelle_image'] ?>" />
             </div>
             <div class="col-2 border-left border-right border-dark text-center">
                 <?php

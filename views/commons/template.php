@@ -18,7 +18,7 @@
   <header class="bg-dark text-white rounded-top perso_policeTitre"> 
     <div class="row align-items-center m-0">
       <div class="col-2 p-2 text-center">
-        <a href="accueil">
+        <a href="<?= URL?>accueil">
           <img src="<?= URL?>public/src/img/Autres/logo_header.png" class="rounded-circle img-fluid perso_logoSize" alt="logo entete" />
         </a>
       </div>
