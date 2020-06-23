@@ -15,7 +15,7 @@ function getAnimalFromStatut($idStatut) {
     return $animaux;
 }
 
-function getFirstImage($animal) {
+function getFirstImageAnimal($animal) {
     $bdd = connexionPDO();
     $stmt = $bdd->prepare('SELECT i.id_image, i.libelle_image, i.url_image, i.description_image  FROM `image` i
     INNER JOIN contient c ON c.id_image = i.id_image

@@ -1,9 +1,5 @@
 <?php
-   
-const HOST_NAME="localhost";
-const DATABASE_NAME = "animaux_refonte";
-const USER_NAME = "root";
-const PASSWORD ="";
+ 
 
 const COLOR_ASSO= 'perso_ColorRoseMenu';
 const COLOR_PENSIONNAIRE= 'perso_ColorOrangeMenu';
@@ -21,6 +17,11 @@ const ID_STATUT_MORT = 4;
 const TITRE_ANIMAL_ATTENTE = 'Ils cherchent une famille';
 const TITRE_ANIMAL_FALD = 'Famille d\'Accueil Longue Durée';
 const TITRE_ANIMAL_ANCIEN = 'Les anciens';
+
+const TYPE_NEWS    = "News";
+const TYPE_ACTIONS = "Action";
+const TYPE_EVENTS  = "Event";
+
 //  for ex if we have localhost/jl/refonteSite/index.php/?page=actu 
 //$_SERVER[HTTP_HOST]->localhost et $_SERVER[PHP_SELF]->/jl/refonteSite/index.php
 //on obtient URL = http://localhost/jl/refonteSite/

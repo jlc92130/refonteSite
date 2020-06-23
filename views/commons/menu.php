@@ -32,9 +32,9 @@
             Actus
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item perso_ColorVertMenu" href="actus">Nouvelles des adoptés</a>
-                <a class="dropdown-item perso_ColorVertMenu" href="#">Evénements</a>
-                <a class="dropdown-item perso_ColorVertMenu" href="#">Nos actions au quotidien</a>
+                <a class="dropdown-item perso_ColorVertMenu" href="<?= URL ?>actus&type=<?= TYPE_NEWS ?>">Nouvelles des adoptés</a>
+                <a class="dropdown-item perso_ColorVertMenu" href="<?= URL ?>actus&type=<?= TYPE_EVENTS ?>">Evénements</a>
+                <a class="dropdown-item perso_ColorVertMenu" href="<?= URL ?>actus&type=<?= TYPE_ACTIONS ?>">Nos actions au quotidien</a>
             </div>
         </li>
         <li class="nav-item dropdown">

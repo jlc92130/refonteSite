@@ -22,7 +22,7 @@ function getPagePensionnaires() {
       }
    
       foreach($animaux as $key=>$animal) { 
-         $image = getFirstImage($animal['id_animal']);
+         $image = getFirstImageAnimal($animal['id_animal']);
          $animaux[$key]['image'] = $image;
    
          $caracteres = getAllCaracters($animal['id_animal']);
@@ -41,8 +41,14 @@ function getPagePensionnaires() {
 function getPageAccueil() {
    $description = "Page d'accueil";
    $title = "Page d'accueil";
-   $animaux = getAnimalFromStatut($idStat);
+   $animaux = getAnimalFromStatut(ID_STATUT_A_L_ADOPTION);
+   foreach ($animaux as $key => $animal) {
+      $image = getFirstImageAnimal($animal['id_animal']);
+      $animaux[$key]['image'] = $image;
 
+   }
+   $news = getLastNews();
+   $action = getLastActionsOrEvents();
    require_once "views/front/accueil.view.php";
    
 }
@@ -108,17 +114,23 @@ function getPageEducateur() {
    
 }
 
-function getPageActu() {
+function getPageActus() {
    $description = "Page d'actualité du site";
    $title = "Les actualites";
 
-   $actualites = getActualiteFromBD();
-   foreach($actualites as $key => $actualite) {
-      $image = getImageActualiteFromBD($actualite['id_image']);
-     
-      //on rajoute un champs a l objet actualite
-      $actualites[$key]["image"] = $image;
-      
+   
+   if (ISSET($_GET['type']) && !empty($_GET['type'])) {
+      $typeNews = Securite::secureHTML($_GET['type']);
+      $actualites = getActualiteFromBD($typeNews);
+      foreach($actualites as $key => $actualite) {
+         $image = getImageActualiteFromBD($actualite['id_image']);
+        
+         //on rajoute un champs a l objet actualite
+         $actualites[$key]["image"] = $image;
+      }
+   }
+   else {
+      throw new Exception("Le type d'actualite n'est pas renseigné ");
    }
    
    require_once "views/front/actu.view.php";
@@ -138,6 +150,4 @@ function getPageAnimal() {
    else {
       throw new Exception ("L ID de l'animal n'est pas renseigné");
    }
-   
-    
 }

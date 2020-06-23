@@ -1,11 +1,11 @@
 <?php
 require_once "pdo.php";
 
-function getActualiteFromBD() {
+function getActualiteFromBD($type) {
     $bdd = connexionPDO();
-    $req = 'SELECT * FROM actualite ';
+    $req = 'SELECT * FROM actualite where type_actualite=:type order by date_publication_actualite DESC' ;
     $stmt = $bdd->prepare($req);
-    #$stmt->bindValue(":type",$type,PDO::PARAM_STR);
+    $stmt->bindValue(":type",$type,PDO::PARAM_STR);
     $stmt->execute();
     $actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);//we fetch one line
     $stmt->closeCursor();
@@ -23,3 +23,37 @@ function getImageActualiteFromBD($idImage) {
     return $image;
 }
 
+
+function getLastNews() {
+    $bdd = connexionPDO();
+    $req = 'SELECT id_actualite, libelle_actualite, contenu_actualite, date_publication_actualite,type_actualite, 
+    a.id_image, i.url_image, i.libelle_image from actualite a
+    INNER JOIN image i ON i.id_image = a.id_image
+    where type_actualite=:type order by date_publication_actualite 
+    DESC LIMIT 1
+    ';
+    $stmt = $bdd->prepare($req);
+    $stmt-> bindValue(':type',TYPE_NEWS,PDO::PARAM_STR);
+    $stmt->execute();
+    $actualite = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $actualite;
+}
+function getLastActionsOrEvents() {
+    $bdd = connexionPDO();
+    $req = 'SELECT id_actualite, libelle_actualite, contenu_actualite, date_publication_actualite,type_actualite, 
+    a.id_image,i.libelle_image, i.url_image from actualite a
+    INNER JOIN image i ON i.id_image = a.id_image
+    where type_actualite = :typeAction or type_actualite = :typeEvent order by date_publication_actualite 
+    DESC LIMIT 1
+    ';
+    $stmt = $bdd->prepare($req);
+    $stmt-> bindValue(':typeAction',TYPE_ACTIONS,PDO::PARAM_STR);
+    $stmt-> bindValue(':typeEvent',TYPE_EVENTS,PDO::PARAM_STR);
+    $stmt->execute();
+    $actualite = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $actualite;
+}
+
+ 

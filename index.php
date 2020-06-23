@@ -15,7 +15,7 @@ try {
                 break;
                 case "partenaires": getPagePartenaires();           
                 break;
-                case "actus": getPageActu();
+                case "actus": getPageActus();
                 break;
                 case "temperatures": getPageTemperatures();            
                 break;

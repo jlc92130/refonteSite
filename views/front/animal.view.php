@@ -31,7 +31,7 @@
     </div>
     <div class="col-6 col-md-4 text-center">
         <div class="perso_policeTitre perso_size20 mb-3">Puce: <?php echo $animal['puce'] ?></div>
-        <div class="mb-2">Né : <?php echo $animal['date_naissance_animal'] ?></div>
+        <div class="mb-2"><?= date("d/m/Y",strtotime($animal['date_naissance_animal'])) ?></div>
 
         
 

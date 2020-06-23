@@ -1,5 +1,6 @@
 <?php 
 ob_start();
+
 ?>
 
 <div class="p-2 text-center" >
@@ -13,6 +14,7 @@ ob_start();
 <?php 
 $content = ob_get_clean();
 require "views/commons/template.php";
+
 ?>
             
       
