@@ -26,7 +26,7 @@
         <?php include('views/commons/menu.php') ?>
       </div>
       <div class="col-2 text-right pt-1 pr-4 ">
-        ALC 
+        <a href="<?= URL ?>login" class="nav-link text-white text-center" >ALC</a> 
       </div>
     </div>
   </header> 

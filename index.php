@@ -1,5 +1,5 @@
 <?php
-
+require_once "controllers/bckEnd.controller.php";
 require_once "controllers/frtEnd.controller.php";
 require_once "config/Securite.class.php";
 
@@ -7,6 +7,8 @@ try {
     if (isset($_GET['page']) && !empty($_GET['page'])) {
         $page = Securite::secureHTML($_GET['page']);
         switch ($_GET['page']) {
+                case "login": getPageLogin();
+                break;
                 case "accueil": getPageAccueil();            
                 break;
                 case "pensionnaires": getPagePensionnaires();            
