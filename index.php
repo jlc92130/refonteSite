@@ -1,4 +1,6 @@
 <?php
+//start session
+session_start();
 require_once "controllers/bckEnd.controller.php";
 require_once "controllers/frtEnd.controller.php";
 require_once "config/Securite.class.php";
