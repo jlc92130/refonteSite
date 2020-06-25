@@ -4,7 +4,7 @@ session_start();
 require_once "controllers/bckEnd.controller.php";
 require_once "controllers/frtEnd.controller.php";
 require_once "config/Securite.class.php";
-
+// CREATION OF A HASH OF THE PASSWORD 'test'-> echo password_hash('test', PASSWORD_DEFAULT );
 try {
     if (isset($_GET['page']) && !empty($_GET['page'])) {
         $page = Securite::secureHTML($_GET['page']);
@@ -38,6 +38,8 @@ try {
                 case "mentions": getPageMentions();            
                 break;
                 case "animal": getPageAnimal();           
+                break;
+                case "admin" : getPageAdmin();
                 break;
                 case "error301": 
                 case "error302": 

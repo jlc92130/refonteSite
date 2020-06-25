@@ -22,6 +22,8 @@ const TYPE_NEWS    = "News";
 const TYPE_ACTIONS = "Action";
 const TYPE_EVENTS  = "Event";
 
+const COOKIE_PROTECT = "timer";
+
 //  for ex if we have localhost/jl/refonteSite/index.php/?page=actu 
 //$_SERVER[HTTP_HOST]->localhost et $_SERVER[PHP_SELF]->/jl/refonteSite/index.php
 //on obtient URL = http://localhost/jl/refonteSite/
