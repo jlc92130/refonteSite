@@ -11,31 +11,18 @@ function getPageLogin() {
    $alert2 = "";
 
    // if session exist then we are redirected on page admin
-   if (isset($_SESSION['acces']) && !empty($_SESSION['acces']) && $_SESSION['acces'] === "admin") {
-      if ($_COOKIE[COOKIE_PROTECT] === $_SESSION[COOKIE_PROTECT]) {
-         $ticket = session_id().microtime().rand(0.999);
-         $ticket = hash("sha512", $ticket);
-         setcookie(COOKIE_PROTECT,$ticket,time()+ (60 * 20),'/',null,false,true);
-         $_SESSION[COOKIE_PROTECT] = $ticket;
+   if (Securite::verificationAcces() && Securite::verificationCookie()) {
          header("Location: admin");
          exit();
       }
-      else {
-         session_destroy();
-         throw new Exception("Vous n'avez pas le droit d'être là");
-      }
 
-   }
    if (isset($_POST["login"]) && !empty($_POST['login']) && isset($_POST["password"]) && !empty($_POST['password']) ) {
       $login_saisi    = Securite::secureHTML($_POST['login']);
       $password_saisi = Securite::secureHTML($_POST["password"]);
       
       if(connexionOK($login_saisi,$password_saisi)) {
          $_SESSION['acces'] = "admin";
-         $ticket = session_id().microtime().rand(0.999);
-         $ticket = hash("sha512", $ticket);
-         setcookie(COOKIE_PROTECT,$ticket,time()+ (60 *20) ,'/',null,false,true);
-         $_SESSION[COOKIE_PROTECT] = $ticket;
+         Securite::genererCookie();
          header("Location: admin");
          exit();
       }
@@ -51,8 +38,40 @@ function getPageLogin() {
 }
 
 function getPageAdmin() {
-   $title = "Page d'administration";
-   $description = "Page d'administration";
+   if(isset($_POST['deconnexion']) && $_POST['deconnexion'] === "true") {
+      session_destroy();
+      header("Location: accueil");
+      exit();
+   }
 
-   require_once "views/back/adminAccueil.view.php";
+   if (Securite::verificationAcces()) {
+      $title = "Page d'administration";
+      $description = "Page d'administration";
+      Securite::genererCookie();
+      require_once "views/back/adminAccueil.view.php";
+   }
+   else {
+      throw new Exception("Vous n'avez pas le droit d'accéder à cette page");   
+   }
 }
+
+function getPagePensionnaireAdmin() {
+   if ( Securite::verificationAcces()) {
+      $title = "Page de gestion des pensionnaires";
+      $description = "Page de gestion des pensionnaires";
+      Securite::genererCookie();
+      require_once "views/back/adminPensionnaire.view.php";
+   }
+   
+}
+
+function getPageNewsAdmin() {
+   if ( Securite::verificationAcces()) {
+      $title = "Page de gestion des news";
+      $description = "Page de gestion des news";
+      Securite::genererCookie();
+      require_once "views/back/adminNews.view.php";
+   }
+ 
+}
+

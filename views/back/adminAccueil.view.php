@@ -14,6 +14,7 @@
         <form action="" method="POST">
             <input type='hidden' name='deconnexion' value="true" />
             <input type="submit" class="btn btn-primary" value="se deconnecter">
+            
         </form>
     </div>
  </div>

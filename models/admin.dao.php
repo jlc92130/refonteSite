@@ -15,7 +15,7 @@ function connexionOK($id,$pass) {
     $admin = getPasswordUser($id);
     $password = $admin['password'];
     
-    // password_verify verify the password create by password_hash function
+    // php function password_verify compare the two passwords and return true or false
     return password_verify($pass,$password);
             
    

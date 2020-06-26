@@ -41,6 +41,10 @@ try {
                 break;
                 case "admin" : getPageAdmin();
                 break;
+                case "genererPensionnaireAdmin" : getPagePensionnaireAdmin();
+                break;
+                case "genererNewsAdmin" : getPageNewsAdmin();
+                break;
                 case "error301": 
                 case "error302": 
                 case "error400": 

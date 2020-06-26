@@ -27,8 +27,11 @@ hr {
 .perso_ColorRougeMenu {
   color: #e64e4e !important; }
 
+.perso_ColorAdminMenu {
+  color: #fa0303 !important; }
+
 .perso_ColorBleuCielMenu {
-  color: #40E0D0 !important; }
+  color: #8a092f !important; }
 
 .perso_bgGreen {
   background-color: #c7e0c7 !important; }
