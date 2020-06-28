@@ -66,14 +66,22 @@ function getPagePensionnaireAdmin() {
 }
 
 function getPageNewsAdmin() {
+   if(isset($_POST['titreActu']) && !empty($_POST['titreActu']) && isset($_POST['typeActu']) && !empty($_POST['typeActu']) 
+   && isset($_POST['contenuActu']) && !empty($_POST['contenuActu'])) {
+      $titreActu = Securite::secureHTML($_POST['titreActu']);
+      $typeActu = Securite::secureHTML($_POST['typeActu']);
+      $contenuActu = Securite::secureHTML($_POST['contenuActu']);
+      $date = date("Y-m-d H:i:s", time());
+      insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,1);
+   }
+
    if ( Securite::verificationAcces()) {
       $title = "Page de gestion des news";
       $description = "Page de gestion des news";
       Securite::genererCookie();
-
       $typeActualites = getTypesActualite();
       
-       
+             
       require_once "views/back/adminNews.view.php";
    }
  

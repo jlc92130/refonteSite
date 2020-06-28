@@ -61,7 +61,24 @@ function getTypesActualite() {
    $req = 'SELECT * FROM type_actualite';
    $stmt = $bdd->prepare($req);
    $stmt->execute();
-   $type_actualites = $stmt->fetchAll();
+   $type_actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   $stmt->closeCursor();
    return $type_actualites ;
 }
  
+function insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,$image) {
+    $bdd = connexionPDO();
+    $req = '
+    INSERT INTO actualite (libelle_actualite, id_type_actualite, contenu_actualite, date_publication_actualite, id_image)
+    values (:titre, :typeActualite, :contenu, :date, :image) 
+    ';
+    $stmt = $bdd->prepare($req);
+    $stmt-> bindValue(':titre',$titreActu,PDO::PARAM_STR);
+    $stmt-> bindValue(':typeActualite',$typeActu,PDO::PARAM_INT);
+    $stmt-> bindValue(':contenu',$contenuActu,PDO::PARAM_STR);
+    $stmt-> bindValue(':date',$date,PDO::PARAM_STR); 
+    $stmt-> bindValue(':image',$image,PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+
+}
