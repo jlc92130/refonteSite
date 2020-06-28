@@ -18,9 +18,9 @@ const TITRE_ANIMAL_ATTENTE = 'Ils cherchent une famille';
 const TITRE_ANIMAL_FALD = 'Famille d\'Accueil Longue Durée';
 const TITRE_ANIMAL_ANCIEN = 'Les anciens';
 
-const TYPE_NEWS    = "News";
-const TYPE_ACTIONS = "Action";
-const TYPE_EVENTS  = "Event";
+const TYPE_NEWS    = 1;
+const TYPE_ACTIONS = 2;
+const TYPE_EVENTS  = 3;
 
 const COOKIE_PROTECT = "timer";
 

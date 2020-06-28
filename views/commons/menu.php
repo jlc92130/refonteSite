@@ -26,6 +26,7 @@
                 <a id="<?php echo ID_STATUT_FALD ?>" class="dropdown-item perso_ColorOrangeMenu" href="<?= URL ?>pensionnaires&idStatut=<?php echo ID_STATUT_FALD ?>">Famille d'Accueil Longue Durée</a>
                 <a id="<?php echo ID_STATUT_ADOPTE ?>" class="dropdown-item perso_ColorOrangeMenu" href="<?= URL ?>pensionnaires&idStatut=<?php echo ID_STATUT_ADOPTE ?>">Les anciens</a>
                 <?php if (Securite::verificationAcces()) { ?>
+                <div class="dropdown-divider"></div>
                 <a class="dropdown-item perso_ColorAdminMenu" href="<?= URL ?>genererPensionnaireAdmin">Gestion des pensionnaires</a>
                 <?php } ?>
             </div>
@@ -39,6 +40,7 @@
                 <a class="dropdown-item perso_ColorVertMenu" href="<?= URL ?>actus&type=<?= TYPE_EVENTS ?>">Evénements</a>
                 <a class="dropdown-item perso_ColorVertMenu" href="<?= URL ?>actus&type=<?= TYPE_ACTIONS ?>">Nos actions au quotidien</a>
                 <?php if (Securite::verificationAcces()) { ?>
+                    <div class="dropdown-divider"></div>
                     <a class="dropdown-item perso_ColorAdminMenu" href="<?= URL ?>genererNewsAdmin">Gestion des News</a>
                 <?php } ?>
             </div>

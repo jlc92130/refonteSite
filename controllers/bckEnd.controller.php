@@ -2,7 +2,7 @@
 require_once  "public/utile/formatage.php";
 require_once "config/config.php";
 require_once "models/admin.dao.php";
-
+require_once "models/actualites.requete.php";
 
 function getPageLogin() {
    $title = "Page de login";
@@ -70,6 +70,10 @@ function getPageNewsAdmin() {
       $title = "Page de gestion des news";
       $description = "Page de gestion des news";
       Securite::genererCookie();
+
+      $typeActualites = getTypesActualite();
+      
+       
       require_once "views/back/adminNews.view.php";
    }
  

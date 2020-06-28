@@ -8,13 +8,12 @@
         <a href="genererPensionnaireAdmin" class="btn btn-primary">Gestion des pensionnaires</a>
     </div>
     <div class="col text-center">
-        <a href="gererNewsAdmin" class='btn btn-primary'>Gestion des News</a>
+        <a href="genererNewsAdmin" class='btn btn-primary'>Gestion des News</a>
     </div>
     <div class="col text-center">
         <form action="" method="POST">
             <input type='hidden' name='deconnexion' value="true" />
             <input type="submit" class="btn btn-primary" value="se deconnecter">
-            
         </form>
     </div>
  </div>

@@ -65,7 +65,7 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO );
       <div class="col p-3 d-flex flex-column position-static">
         <h3 class="mb-0 perso_ColorRoseMenu"><?= $news['libelle_actualite'] ?></h3>
         <p><?= affichageCoupe100(nl2br($news['contenu_actualite']),300) ?> </p>
-        <a href="<?= URL ?>actus&type=<?php echo $news["type_actualite"] ?>" class="btn btn-primary">Voir les news</a>
+        <a href="<?= URL ?>actus&type=<?php echo $news["id_type_actualite"] ?>" class="btn btn-primary">Voir les news</a>
       </div>
     </div>
   </div>
@@ -78,8 +78,8 @@ echo styleTitreNiveau1('Ils ont besoin de vous',COLOR_ASSO );
       <div class="col p-3 d-flex flex-column position-static" >
       <h3 class="mb-0 perso_ColorVertMenu"><?= $action['libelle_actualite'] ?></h3>
         <p> <?= affichageCoupe100(nl2br($action['contenu_actualite']),300) ?> </p>
-        <a href="<?= URL ?>actus&type=<?php echo TYPE_ACTIONS ?>" class="btn btn-primary">Voir les actions</a>
-        <a href="<?= URL ?>actus&type=<?php echo TYPE_EVENTS ?>" class="btn btn-primary">Voir les evenements</a>
+        <a href="<?= URL ?>actus&type=<?php echo TYPE_ACTIONS ?>" style="float:left" class="btn btn-primary">Voir les actions</a>
+        <a href="<?= URL ?>actus&type=<?php echo TYPE_EVENTS ?>" style="float:right" class="btn btn-primary">Voir les evenements</a>
 
       </div>
       
