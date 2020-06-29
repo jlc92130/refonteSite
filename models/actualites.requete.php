@@ -78,7 +78,14 @@ function insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,$image) {
     $stmt-> bindValue(':contenu',$contenuActu,PDO::PARAM_STR);
     $stmt-> bindValue(':date',$date,PDO::PARAM_STR); 
     $stmt-> bindValue(':image',$image,PDO::PARAM_INT);
-    $stmt->execute();
+    $res = $stmt->execute();
     $stmt->closeCursor();
 
+    if ($res >0) {
+        return true;
+    }
+    else {
+        return false;
+    } 
+    
 }

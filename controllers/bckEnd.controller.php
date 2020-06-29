@@ -7,8 +7,8 @@ require_once "models/actualites.requete.php";
 function getPageLogin() {
    $title = "Page de login";
    $description = "Page de login";
-   $alert1 = "";
-   $alert2 = "";
+   $alert = "";
+   $alertType = "";
 
    // if session exist then we are redirected on page admin
    if (Securite::verificationAcces() && Securite::verificationCookie()) {
@@ -24,14 +24,20 @@ function getPageLogin() {
          $_SESSION['acces'] = "admin";
          Securite::genererCookie();
          header("Location: admin");
+         $alert = 'Vous êtes connecté';
+         $alertType = ALERT_SUCCESS;
          exit();
       }
       else {
-         $alert1 = 'Mot de passe invalide';
+         $alert = 'L\'un des champs saisi est invalide';
+         $alertType = ALERT_DANGER;
+      
       }
    } 
    else {
-      $alert2 = 'Tous les champs doivent être saisis';
+      $alert = 'Tous les champs doivent être saisis';
+      $alertType = ALERT_DANGER;
+      
    }
    
    require_once "views/back/login.view.php";
@@ -66,13 +72,22 @@ function getPagePensionnaireAdmin() {
 }
 
 function getPageNewsAdmin() {
+   $alert = "";
+   $alertType = "";
    if(isset($_POST['titreActu']) && !empty($_POST['titreActu']) && isset($_POST['typeActu']) && !empty($_POST['typeActu']) 
    && isset($_POST['contenuActu']) && !empty($_POST['contenuActu'])) {
       $titreActu = Securite::secureHTML($_POST['titreActu']);
       $typeActu = Securite::secureHTML($_POST['typeActu']);
       $contenuActu = Securite::secureHTML($_POST['contenuActu']);
       $date = date("Y-m-d H:i:s", time());
-      insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,1);
+      if (insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,1)) {
+         $alert = "La creation de l'actualite est effectuée"; 
+         $alertType = ALERT_SUCCESS;
+      }
+      else {
+         $alert = "echec de l'insertion d'actualité";
+         $alertType = ALERT_DANGER;
+      }
    }
 
    if ( Securite::verificationAcces()) {

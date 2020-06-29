@@ -53,3 +53,15 @@ function affichageCoupe100($str,$taille) {
     return $desc."<b class='text-primary' >[...] </b>";
     
 }
+function afficherAlert($text,$type) {
+    $alertType = "";
+    if ($type === ALERT_SUCCESS) $alertType = "success";
+    if ($type === ALERT_DANGER)  $alertType = "danger";
+    if ($type === ALERT_INFO)    $alertType = "info";
+    if ($type === ALERT_WARNING) $alertType = "warning";
+
+    $txt = "<div class='alert alert-".$alertType." m-2'>";
+    $txt .= $text;
+    $txt .= "</div>";
+    return $txt;
+}

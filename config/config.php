@@ -22,6 +22,11 @@ const TYPE_NEWS    = 1;
 const TYPE_ACTIONS = 2;
 const TYPE_EVENTS  = 3;
 
+const ALERT_SUCCESS = 1;
+const ALERT_DANGER = 2;
+const ALERT_INFO = 3;
+const ALERT_WARNING = 4;
+
 const COOKIE_PROTECT = "timer";
 
 //  for ex if we have localhost/jl/refonteSite/index.php/?page=actu 

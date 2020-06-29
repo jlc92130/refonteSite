@@ -19,16 +19,10 @@
     </form>
  </div>
 
-<?php if ($alert1 !== '') { ?>
-    <div class='alert alert-danger'>
-        <?= $alert1;  ?>
-    </div>
-<?php } ?>
-<?php if ($alert2 !== '') { ?>
-    <div class='alert alert-danger'>
-        <?= $alert2;  ?>
-    </div>
-<?php } ?>
+ <?php if ($alert !='') {      
+    echo afficherAlert($alert,$alertType);
+}
+ ?>
 
 <?php
 $content = ob_get_clean();

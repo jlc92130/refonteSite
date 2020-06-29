@@ -35,6 +35,10 @@ echo styleTitreNiveau1("Page de gestion des news" , COLOR_PENSIONNAIRE);
     
 </form>
 
+<?php if ($alert !== '') { 
+    echo afficherAlert($alert,$alertType);
+ } ?>
+
 <?php
 $content = ob_get_clean();
 require "views/commons/template.php" 
