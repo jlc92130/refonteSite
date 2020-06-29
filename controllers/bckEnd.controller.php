@@ -1,4 +1,5 @@
 <?php
+require_once "public/utile/gestionImage.php";
 require_once  "public/utile/formatage.php";
 require_once "config/config.php";
 require_once "models/admin.dao.php";
@@ -80,12 +81,21 @@ function getPageNewsAdmin() {
       $typeActu = Securite::secureHTML($_POST['typeActu']);
       $contenuActu = Securite::secureHTML($_POST['contenuActu']);
       $date = date("Y-m-d H:i:s", time());
+      $fileImage = $_FILES['imageActu'];
+      $repertoire = "public/src/img/sites/news/";
+
+      try {
+         ajoutImage($fileImage, $repertoire, $titreActu);
       if (insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,1)) {
          $alert = "La creation de l'actualite est effectuée"; 
          $alertType = ALERT_SUCCESS;
       }
       else {
-         $alert = "echec de l'insertion d'actualité";
+         throw new Excpetion("L'insertion en BD n'a pas fonctionnée");
+      }
+      }
+      catch (Exception $e) {
+         $alert = "echec de l'insertion d'actualité : ". $e->getMessage();
          $alertType = ALERT_DANGER;
       }
    }
