@@ -75,8 +75,8 @@ function getPagePensionnaireAdmin() {
 function getPageNewsAdmin() {
    $alert = "";
    $alertType = "";
-   if(isset($_POST['titreActu']) && !empty($_POST['titreActu']) && isset($_POST['typeActu']) && !empty($_POST['typeActu']) 
-   && isset($_POST['contenuActu']) && !empty($_POST['contenuActu'])) {
+   if(isset($_POST['titreActu']) && !empty($_POST['titreActu']) && isset($_POST['typeActu']) && 
+   !empty($_POST['typeActu']) && isset($_POST['contenuActu']) && !empty($_POST['contenuActu'])) {
       $titreActu = Securite::secureHTML($_POST['titreActu']);
       $typeActu = Securite::secureHTML($_POST['typeActu']);
       $contenuActu = Securite::secureHTML($_POST['contenuActu']);
@@ -84,9 +84,18 @@ function getPageNewsAdmin() {
       $fileImage = $_FILES['imageActu'];
       $repertoire = "public/src/img/sites/news/";
 
+      
+      
       try {
-         ajoutImage($fileImage, $repertoire, $titreActu);
-      if (insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,1)) {
+         // add image in the folder $repertoire (the function return the name of the image)
+         // we give to our image the name $titreActu
+         $nomImage = ajoutImage($fileImage, $repertoire,$titreActu);
+
+         // we recover the id of the image we put in dbb
+         $idImage = insertImageNewsIntoBD($nomImage,"news/".$nomImage);
+        
+
+      if (insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,$idImage)) {
          $alert = "La creation de l'actualite est effectuée"; 
          $alertType = ALERT_SUCCESS;
       }
