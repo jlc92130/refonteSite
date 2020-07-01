@@ -72,20 +72,36 @@ function getPagePensionnaireAdmin() {
    
 }
 
-function getPageNewsAdmin() {
-   $alert = "";
-   $alertType = "";
+function getPageNewsAdmin($require='', $alert='', $alertType='') {
+     
+   if ( Securite::verificationAcces()) {
+      $title = "Page de gestion des news";
+      $description = "Page de gestion des news";
+      Securite::genererCookie();
+      $typeActualites = getTypesActualite();
+      $contentAdminAction="";
+      
+      if ($require !== '') require_once $require;
+      require_once "views/back/adminNews.view.php";
+   }
+   else {
+      throw new Exception("Vous n'avez pas le droit d'accéder à cette page"); 
+   }
+ 
+}
+
+function getPageNewsAdminAjout() {
+   $alertType = '';
+   $alert = '';
    if(isset($_POST['titreActu']) && !empty($_POST['titreActu']) && isset($_POST['typeActu']) && 
    !empty($_POST['typeActu']) && isset($_POST['contenuActu']) && !empty($_POST['contenuActu'])) {
-      $titreActu = Securite::secureHTML($_POST['titreActu']);
-      $typeActu = Securite::secureHTML($_POST['typeActu']);
+      $titreActu   = Securite::secureHTML($_POST['titreActu']);
+      $typeActu    = Securite::secureHTML($_POST['typeActu']);
       $contenuActu = Securite::secureHTML($_POST['contenuActu']);
       $date = date("Y-m-d H:i:s", time());
       $fileImage = $_FILES['imageActu'];
       $repertoire = "public/src/img/sites/news/";
-
-      
-      
+     
       try {
          // add image in the folder $repertoire (the function return the name of the image)
          // we give to our image the name $titreActu
@@ -108,16 +124,15 @@ function getPageNewsAdmin() {
          $alertType = ALERT_DANGER;
       }
    }
-
-   if ( Securite::verificationAcces()) {
-      $title = "Page de gestion des news";
-      $description = "Page de gestion des news";
-      Securite::genererCookie();
-      $typeActualites = getTypesActualite();
-      
-             
-      require_once "views/back/adminNews.view.php";
-   }
- 
+   getPageNewsAdmin("views/back/adminNewsAjout.view.php", $alert, $alertType);
+   
 }
 
+
+function getPageNewsAdminModif() {
+
+   getPageNewsAdmin("views/back/adminNewsModif.view.php");
+}
+function getPageNewsAdminSup() {
+   getPageNewsAdmin("views/back/adminNewsSup.view.php");
+}
