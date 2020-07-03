@@ -123,7 +123,7 @@ function getPageActus() {
    
    if (ISSET($_GET['type']) && !empty($_GET['type'])) {
       $typeNews = Securite::secureHTML($_GET['type']);
-      $actualites = getActualiteFromBD($typeNews);
+      $actualites = getActualitesFromBD($typeNews);
       foreach($actualites as $key => $actualite) {
          $image = getImageActualiteFromBD($actualite['id_image']);
         

@@ -72,7 +72,7 @@ function getPagePensionnaireAdmin() {
    
 }
 
-function getPageNewsAdmin($require='', $alert='', $alertType='') {
+function getPageNewsAdmin($require='', $alert='', $alertType='',$data='') {
      
    if ( Securite::verificationAcces()) {
       $title = "Page de gestion des news";
@@ -80,7 +80,7 @@ function getPageNewsAdmin($require='', $alert='', $alertType='') {
       Securite::genererCookie();
       $typeActualites = getTypesActualite();
       $contentAdminAction="";
-      
+
       if ($require !== '') require_once $require;
       require_once "views/back/adminNews.view.php";
    }
@@ -130,9 +130,28 @@ function getPageNewsAdminAjout() {
 
 
 function getPageNewsAdminModif() {
-
-   getPageNewsAdmin("views/back/adminNewsModif.view.php");
+   $alertType = '';
+   $alert = '';
+   $data=array();
+   if (isset($_POST['etape']) && (int) $_POST['etape'] >= 2) {
+      // i get the value of the selection matching with the news type choose by the click of the mouse 
+      $typeActu    = Securite::secureHTML($_POST['typeActu']);
+      //$data['actualites']  = getActualiteFromBD((int) $typeActu);
+      $data['actualite'] = getActualitesFromBD((int) $typeActu);
+   }
+   if (isset($_POST['etape']) && $_POST['etape'] >=3 ) {
+      // we get the number associated to the id of the choosen news
+      $actuChoisi = Securite::secureHTML($_POST['listeActu']);
+      $data['actuChoisi'] = $_POST['listeActu'];
+   }
+ 
+   getPageNewsAdmin("views/back/adminNewsModif.view.php",$alert,$alertType,$data);
 }
+
+
+
+
+
 function getPageNewsAdminSup() {
    getPageNewsAdmin("views/back/adminNewsSup.view.php");
 }

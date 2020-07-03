@@ -4,7 +4,7 @@ ob_start();
 
 <div class="row no-gutters">
         <div class="align-items-center col-12 col-lg-4 p-2" >
-            <img class="img-fluid img-thumbnail d-block mx-auto" src="<?= URL?>public/src/img/Autres/Articles/Sterilisation2.jpg" alt='sterilisation'/>
+            <img class="img-fluid img-thumbnail d-block mx-auto" src="<?= URL?>public/src/img/sites/Articles/Sterilisation2.jpg" alt='sterilisation'/>
         </div>
         <div class="col-12 col-lg-8 p-2" >
             <?= styleTitreNiveau1("La stérilisation des chats !", COLOR_CONSEILS) ?>

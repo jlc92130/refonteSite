@@ -4,7 +4,7 @@ echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>'
 ?>
 <div class='row align-items-center mt-5'>
     <div class="col-12 col-lg-3 text-center">
-        <img class='img-fluid' src="<?= URL?>public/src/img/Autres/logo_header.png"  />
+        <img class='img-fluid' src="<?= URL?>public/src/img/autres/logo_header.png"  />
     </div>
     <div class='col-12 col-lg-9 '>
         <p>C'est l'histoire de 5 amies unies dans un même combat : <span class="badge badge-warning">Aimer</span>, 
@@ -39,7 +39,7 @@ echo styleTitreNiveau1('Association les chatons - Nos Animaux <br /> Dijon</h1>'
 <?php echo styleTitreNiveau2('L\'équipe',COLOR_ASSO); ?>
 <div class='row align-items-center'>
     <div class="col-12 col-lg-3 text-center">
-        <img class='img-fluid' style="height: 250px" src="<?= URL?>public/src/img/Animaux/Chat/Odin/Odin.jpg"  />
+        <img class='img-fluid' style="height: 250px" src="<?= URL?>public/src/img/sites/Animaux/Chat/Odin/Odin.jpg"  />
     </div>
     <div class='col-12 col-lg-9  '>
         <span class="badge badge-primary">Julie</span> : présidente<br />

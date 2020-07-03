@@ -1,7 +1,7 @@
 <?php
 require_once "pdo.php";
 
-function getActualiteFromBD($type) {
+function getActualitesFromBD($type) {
     $bdd = connexionPDO();
     $req = 'SELECT * FROM actualite where id_type_actualite = :type
     order by date_publication_actualite DESC' ;
@@ -61,9 +61,9 @@ function getTypesActualite() {
    $req = 'SELECT * FROM type_actualite';
    $stmt = $bdd->prepare($req);
    $stmt->execute();
-   $type_actualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
+   $typeActualites = $stmt->fetchAll(PDO::FETCH_ASSOC);
    $stmt->closeCursor();
-   return $type_actualites ;
+   return $typeActualites ;
 }
  
 function insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,$image) {
