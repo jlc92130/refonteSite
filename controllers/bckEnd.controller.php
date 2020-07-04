@@ -142,8 +142,11 @@ function getPageNewsAdminModif() {
    if (isset($_POST['etape']) && $_POST['etape'] >=3 ) {
       // we get the number associated to the id of the choosen news
       $actuChoisi = Securite::secureHTML($_POST['listeActu']);
-      $data['actuChoisi'] = $_POST['listeActu'];
+      $data['actuChoisi'] = getActualiteFromBD($actuChoisi);
+
    }
+
+   
  
    getPageNewsAdmin("views/back/adminNewsModif.view.php",$alert,$alertType,$data);
 }

@@ -12,6 +12,20 @@ function getActualitesFromBD($type) {
     $stmt->closeCursor();
     return $actualites;
 }
+function getActualiteFromBD($idActualite) {
+    $bdd = connexionPDO();
+    $req = 'SELECT id_actualite, libelle_actualite, contenu_actualite,id_type_actualite, i.libelle_image, i.url_image 
+    FROM actualite a
+    INNER JOIN image i ON i.id_image = a.id_image
+    where id_actualite = :actu 
+    ';
+    $stmt = $bdd->prepare($req);
+    $stmt-> bindValue(':actu',$idActualite,PDO::PARAM_INT);
+    $stmt->execute();
+    $actualite = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $actualite;
+}
 
 function getImageActualiteFromBD($idImage) {
     $bdd = connexionPDO();
@@ -30,7 +44,7 @@ function getLastNews() {
     $req = 'SELECT id_actualite, libelle_actualite, contenu_actualite, date_publication_actualite,id_type_actualite, 
     a.id_image, i.url_image, i.libelle_image from actualite a
     INNER JOIN image i ON i.id_image = a.id_image
-    where id_type_actualite=:type order by date_publication_actualite 
+    where id_type_actualite =:type order by date_publication_actualite 
     DESC LIMIT 1
     ';
     $stmt = $bdd->prepare($req);

@@ -16,7 +16,6 @@ echo styleTitreNiveau2("Ajout d'une news" , COLOR_PENSIONNAIRE);
                 <?php foreach ($typeActualites as $type) { ?>
                     <option value="<?= $type['id_type_actualite'] ?>"><?= $type['libelle_type'] ?></option>
                 <?php } ?>
-                
             </select>
         </div>
     </div>
@@ -24,7 +23,7 @@ echo styleTitreNiveau2("Ajout d'une news" , COLOR_PENSIONNAIRE);
 
     <div class="form-row ">
         <label for="contenuActu">Contenu de l'actualité:</label>
-        <textarea class="form-control" id="contenuActu" name="contenuActu" row="5" required></textarea>
+        <textarea class="form-control" id="contenuActu" name="contenuActu" rows="5" required></textarea>
     </div>
 
     <div class="form-group mt-5">
