@@ -20,11 +20,11 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
 </form>
 
 <?php if(isset($_POST['etape']) && (int) $_POST['etape']) { ?>
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data" onchange = "submit()">
     <input type="hidden" name="etape" value="3">
     <input type="hidden" name="typeActu" value="<?= $_POST['typeActu'] ?>" >
     <label for="listeActu" name="listeActu">Actualite:</label>
-    <select name="listeActu" id="listeActu" class="form-control" onchange="submit()">
+    <select name="listeActu" id="listeActu" class="form-control">
         <option></option>
         <?php foreach ($data['actualite'] as $actualite) { ?>
         <option value="<?= $actualite['id_actualite'] ?>" 
@@ -42,6 +42,9 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
 
 <?php if(isset($_POST['etape']) && $_POST['etape']>=3) { ?>
 <form action="" method="POST" enctype="multipart/form-data" >
+    <input type="hidden" name="etape" value="4">
+    <input type="hidden" name="typeActu" value="<?= $_POST['typeActu'] ?>" >
+    <input type="hidden" name="listeActu" value="<?= $_POST['listeActu'] ?>" >
     <div class="form-row">
         <div class="form-group col-6">
             <label  name="titreActu">Titre de l'actualité:</label>
@@ -68,6 +71,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
                 <?= $data['actuChoisi']['contenu_actualite'] ?>
             </textarea>
         </div>
+        <img style="max-width:200px;" src="public/src/img/sites/<?= $data['actuChoisi']['url_image'] ?>" alt="<?= $data['actuChoisi']['libelle_image'] ?>">
         <div class="form-group"> 
             <label for="imageActu" >Image:</label>
             <input type="file" name="imageActu" class="form-control" id="imageActu" >

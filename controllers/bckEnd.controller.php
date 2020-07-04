@@ -133,6 +133,7 @@ function getPageNewsAdminModif() {
    $alertType = '';
    $alert = '';
    $data=array();
+   
    if (isset($_POST['etape']) && (int) $_POST['etape'] >= 2) {
       // i get the value of the selection matching with the news type choose by the click of the mouse 
       $typeActu    = Securite::secureHTML($_POST['typeActu']);
@@ -143,9 +144,37 @@ function getPageNewsAdminModif() {
       // we get the number associated to the id of the choosen news
       $actuChoisi = Securite::secureHTML($_POST['listeActu']);
       $data['actuChoisi'] = getActualiteFromBD($actuChoisi);
+   }
+   if (isset($_POST['etape']) && $_POST['etape'] >=4 ) {
+      $titreActu   = Securite::secureHTML($_POST['titreActu']);
+      $typeActu    = Securite::secureHTML($_POST['typeActu']);
+      $contenuActu = Securite::secureHTML($_POST['contenuActu']);
+      //id of the image's news selected
+      $idImage = $data['actuChoisi']['id_image'];
+      $idActualite = $data['actuChoisi']['id_actualite'];
+      try {
+         if ($_FILES['imageActu']['size'] > 0) {
+            $fileImage = $_FILES['imageActu'];
+            $repertoire = "public/src/img/sites/news/";
+            $nomImage = ajoutImage($fileImage, $repertoire,$titreActu);
+            // id of the uploaded image if we don't upload image then we will have the id of the current image
+            $idImage = insertImageNewsIntoBD($nomImage,"news/".$nomImage);
+         }
+      
+         if (updateActualiteIntoBD($idActualite,$titreActu,$typeActu,$contenuActu,$idImage)) {
+            $alert = "La modification de l'actualite est effectuée"; 
+            $alertType = ALERT_SUCCESS;
+         }
+         else {
+            throw new Excpetion("La modification en BD ne s'est pas faite");
+         }
+      }
+      catch (Exception $e) {
+         $alert = "La modification de l'actualité n'a pas fonctionnée : ". $e->getMessage();
+         $alertType = ALERT_DANGER;
+      }
 
    }
-
    
  
    getPageNewsAdmin("views/back/adminNewsModif.view.php",$alert,$alertType,$data);
