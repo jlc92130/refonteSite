@@ -9,7 +9,7 @@ function ajoutImage($file, $dir, $nom) {
     $extension = strtolower(pathinfo($file['name'],PATHINFO_EXTENSION));
    
     //path of the image directory
-     $target_file = $dir.$nom.'_'.$file['name'];;
+     $target_file = $dir.$nom.'_'.$file['name'];
 
     if (!empty($file["tmp_name"])) {
         if(!getimagesize($file["tmp_name"]))

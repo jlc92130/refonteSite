@@ -14,7 +14,7 @@ function getActualitesFromBD($type) {
 }
 function getActualiteFromBD($idActualite) {
     $bdd = connexionPDO();
-    $req = 'SELECT id_actualite, libelle_actualite, contenu_actualite,id_type_actualite, i.libelle_image, i.url_image 
+    $req = 'SELECT id_actualite, libelle_actualite, contenu_actualite, id_type_actualite, i.id_image, i.libelle_image, i.url_image 
     FROM actualite a
     INNER JOIN image i ON i.id_image = a.id_image
     where id_actualite = :actu 
@@ -119,17 +119,21 @@ function insertImageNewsIntoBD($nomImage,$url) {
     return $lastId;
 }
 
-function updateActualiteIntoBD() {
+function updateActualiteIntoBD($idActualite,$titreActu,$contenuActu,$typeActu,$idImage) {
     $bdd = connexionPDO();
     $req = 'UPDATE actualite 
-    SET libelle_actualite = :libelle, contenu_actualite = :contenu,
-    id_image = :image, id_type_actualite = :type,
+    SET id_actualite = :idActualite, id_type_actualite = :typeActualite, libelle_actualite = :libelle, contenu_actualite = :contenu,
+    id_image = :idImage
     WHERE  id_actualite = :idActualite
     ';
     $stmt = $bdd->prepare($req);
-    $stmt-> bindValue(':libelle_image',$);
-    $stmt-> bindValue(':contenu_actualite',$nomImage,PDO::PARAM_STR);
-    $stmt-> bindValue(':id_image',$url, PDO::PARAM_STR);
-    $stmt-> bindValue(':id_type_actualite',$nomImage,PDO::PARAM_STR);
-    $stmt->bindValue(':idActualite')
+    $stmt-> bindValue(':typeActualite',$typeActu,PDO::PARAM_INT);
+    $stmt-> bindValue(':libelle',$titreActu,PDO::PARAM_STR);
+    $stmt-> bindValue(':idActualite',$idActualite,PDO::PARAM_INT);
+    $stmt-> bindValue(':contenu',$contenuActu,PDO::PARAM_STR);
+    $stmt-> bindValue(':idImage',$idImage, PDO::PARAM_INT);
+    $res = $stmt-> execute();
+    $stmt-> closeCursor();
+    if ($res>0) return true ;
+    return false;
 }

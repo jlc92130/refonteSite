@@ -38,9 +38,10 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
     <?php } ?> 
 </form>
 
-<?php echo styleTitreNiveau3("La news à modifier:", COLOR_PENSIONNAIRE); ?>
+<br /><br />
 
 <?php if(isset($_POST['etape']) && $_POST['etape']>=3) { ?>
+<?php echo styleTitreNiveau3("La news à modifier:", COLOR_PENSIONNAIRE); ?>
 <form action="" method="POST" enctype="multipart/form-data" >
     <input type="hidden" name="etape" value="4">
     <input type="hidden" name="typeActu" value="<?= $_POST['typeActu'] ?>" >
@@ -65,21 +66,24 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
             <?php } ?>           
             </select> 
         </div>
-        <div class="form-group col-12">
-            <label for="contenuActu" name="contenuActu">Contenu de l'actualité</label>
-            <textarea id="contenuActu" name="contenuActu" rows=5 class="form-control">
-                <?= $data['actuChoisi']['contenu_actualite'] ?>
-            </textarea>
-        </div>
-        <img style="max-width:200px;" src="public/src/img/sites/<?= $data['actuChoisi']['url_image'] ?>" alt="<?= $data['actuChoisi']['libelle_image'] ?>">
-        <div class="form-group"> 
-            <label for="imageActu" >Image:</label>
-            <input type="file" name="imageActu" class="form-control" id="imageActu" >
-       
-            <div class=" mt-2 no-gutters">
-                <input type="submit" value="Valider" class='btn btn-primary btn-sm'>
-            </div>
-        </div>
+    </div>
+    <div class="form-group col-12">
+        <label for="contenuActu" name="contenuActu">Contenu de l'actualité</label>
+        <textarea id="contenuActu" name="contenuActu" rows=5 class="form-control">
+            <?= $data['actuChoisi']['contenu_actualite'] ?>
+        </textarea>
+    </div>
+    <img style="max-width:200px;" src="public/src/img/sites/<?= $data['actuChoisi']['url_image'] ?>" alt="<?= $data['actuChoisi']['libelle_image'] ?>">
+    <div class="form-group"> 
+        <label for="imageActu" >Image:</label>
+        <input type="file" name="imageActu" class="form-control" id="imageActu" >
+    </div>
+    <div class=" mt-2 no-gutters">
+        <input type="submit" value="Valider" class='btn btn-primary btn-sm'>
+    
+        <button id="btnSup"   class='btn btn-danger btn-sm'>Supprimer</button>
+    </div>
+
 </form>
 <?php } ?>
 <?php

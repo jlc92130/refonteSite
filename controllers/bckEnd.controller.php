@@ -152,6 +152,7 @@ function getPageNewsAdminModif() {
       //id of the image's news selected
       $idImage = $data['actuChoisi']['id_image'];
       $idActualite = $data['actuChoisi']['id_actualite'];
+      $nomImage = $data['actuChoisi']['libelle_image'];
       try {
          if ($_FILES['imageActu']['size'] > 0) {
             $fileImage = $_FILES['imageActu'];
@@ -161,7 +162,7 @@ function getPageNewsAdminModif() {
             $idImage = insertImageNewsIntoBD($nomImage,"news/".$nomImage);
          }
       
-         if (updateActualiteIntoBD($idActualite,$titreActu,$typeActu,$contenuActu,$idImage)) {
+         if (updateActualiteIntoBD($idActualite,$titreActu,$contenuActu,$typeActu,$idImage)) {
             $alert = "La modification de l'actualite est effectuée"; 
             $alertType = ALERT_SUCCESS;
          }
@@ -173,6 +174,8 @@ function getPageNewsAdminModif() {
          $alert = "La modification de l'actualité n'a pas fonctionnée : ". $e->getMessage();
          $alertType = ALERT_DANGER;
       }
+      $data['actualite'] = getActualitesFromBD((int) $typeActu);
+      $data['actuChoisi'] = getActualiteFromBD($actuChoisi);
 
    }
    
