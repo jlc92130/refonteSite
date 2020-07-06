@@ -11,13 +11,9 @@ function ajoutImage($file, $dir, $nom) {
     //path of the image directory
      $target_file = $dir.$nom.'_'.$file['name'];
 
-    if (!empty($file["tmp_name"])) {
-        if(!getimagesize($file["tmp_name"]))
+    if(!getimagesize($file["tmp_name"]))
         throw new Exception("Le fichier n'est pas une image");
-    }
-    else {
-        throw new Exception("Vous devez uploader une image");
-    }
+   
     //if($extension !== "jpg" && $extension !== "png" && $extension !== "jpeg" )
       //  throw new Exception("L'extension du fichier n'est pas reconnue");
     if(file_exists($target_file))

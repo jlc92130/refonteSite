@@ -16,7 +16,5 @@ function connexionOK($id,$pass) {
     $password = $admin['password'];
     
     // php function password_verify compare the two passwords and return true or false
-    return password_verify($pass,$password);
-            
-   
+    return password_verify($pass,$password);   
 }

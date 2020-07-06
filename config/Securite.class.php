@@ -21,6 +21,6 @@ class Securite {
          }
     }
     public static function verificationAcces() {
-        return (isset($_SESSION['acces']) && !empty($_SESSION['acces']) && $_SESSION['acces'] === "admin");
+        return (isset($_SESSION['acces']) && !empty($_SESSION['acces']) && $_SESSION['acces'] === "toto");
     }
 }

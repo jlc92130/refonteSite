@@ -137,3 +137,16 @@ function updateActualiteIntoBD($idActualite,$titreActu,$contenuActu,$typeActu,$i
     if ($res>0) return true ;
     return false;
 }
+
+function supprimerActuFromBD($idActualite) {
+    $bdd = connexionPDO();
+    $req = "DELETE FROM actualite
+    WHERE id_actualite = :idActualite
+    ";
+    $stmt = $bdd->prepare($req);
+    $stmt-> bindValue(':idActualite', $idActualite,PDO::PARAM_INT); 
+    $stmt-> execute();
+    $stmt-> closeCursor();
+
+}
+

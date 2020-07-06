@@ -22,7 +22,8 @@ function getPageLogin() {
       $password_saisi = Securite::secureHTML($_POST["password"]);
       
       if(connexionOK($login_saisi,$password_saisi)) {
-         $_SESSION['acces'] = "admin";
+         // we create a session named toto
+         $_SESSION['acces'] = "toto";
          Securite::genererCookie();
          header("Location: admin");
          $alert = 'Vous êtes connecté';
@@ -167,7 +168,7 @@ function getPageNewsAdminModif() {
             $alertType = ALERT_SUCCESS;
          }
          else {
-            throw new Excpetion("La modification en BD ne s'est pas faite");
+            throw new Exception("La modification en BD ne s'est pas faite");
          }
       }
       catch (Exception $e) {
@@ -177,16 +178,27 @@ function getPageNewsAdminModif() {
       $data['actualite'] = getActualitesFromBD((int) $typeActu);
       $data['actuChoisi'] = getActualiteFromBD($actuChoisi);
 
-   }
-   
- 
+   } 
    getPageNewsAdmin("views/back/adminNewsModif.view.php",$alert,$alertType,$data);
 }
 
-
-
-
-
 function getPageNewsAdminSup() {
-   getPageNewsAdmin("views/back/adminNewsSup.view.php");
+   $alert = "";
+   $alertType = "";
+   if (isset($_GET['sup']) && !empty($_GET['sup'])) {
+      try {
+         $idActualite = securite::secureHTML($_GET['sup']);
+                 
+         supprimerActuFromBD($idActualite);
+         $alert = "La suppression de l'actualité a fonctionné";
+         $alertType = 'ALERT-SUCCESS';
+        
+   }
+   catch (Exception $e) {
+      $alert = "La suppression de l'actualité n'a pas fonctionnée : ";
+      $alertType = ALERT_DANGER;
+   }
+   getPageNewsAdmin("views/back/adminNewsModif.view.php");
+
+}
 }

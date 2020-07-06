@@ -49,7 +49,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
     <div class="form-row">
         <div class="form-group col-6">
             <label  name="titreActu">Titre de l'actualité:</label>
-            <input type="text" class="form-control" name="titreActu" 
+            <input type="text" class="form-control" id="titreActu" name="titreActu" 
             value="<?= $data['actuChoisi']['libelle_actualite'] ?>">
         </div>
         <div class="form-group col-6">   
@@ -86,6 +86,9 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
 
 </form>
 <?php } ?>
+
+<script src="public/js/verificationSuppressionActualite.js"></script>
+
 <?php
 $contentAdminAction = ob_get_clean(); 
 ?> 
