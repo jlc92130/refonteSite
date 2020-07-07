@@ -2,10 +2,14 @@
 ob_start();
 echo styleTitreNiveau1("Page de gestion des pensionnaires" , COLOR_PENSIONNAIRE);
 ?>
-<div>
-    
-</div>
+<a href="genererPensionnaireAdminAjout">Ajouter</a>
+<a href="genererPensionnaireAdminModif">Modifier</a>
 
+<?= $contentAdminAction ?>
+
+<?php if ($alert !== '') { 
+    echo afficherAlert($alert,$alertType);
+ } ?>
 
 
 <?php

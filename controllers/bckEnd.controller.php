@@ -12,12 +12,14 @@ function getPageLogin() {
    $alertType = "";
 
    // if session exist then we are redirected on page admin
-   if (Securite::verificationAcces() && Securite::verificationCookie()) {
+   if (Securite::verificationAcces()) {
          header("Location: admin");
          exit();
       }
 
-   if (isset($_POST["login"]) && !empty($_POST['login']) && isset($_POST["password"]) && !empty($_POST['password']) ) {
+   if (isset($_POST["login"]) && !empty($_POST['login']) 
+      && isset($_POST["password"]) && !empty($_POST['password']) ) 
+   {
       $login_saisi    = Securite::secureHTML($_POST['login']);
       $password_saisi = Securite::secureHTML($_POST["password"]);
       
@@ -63,15 +65,47 @@ function getPageAdmin() {
    }
 }
 
-function getPagePensionnaireAdmin() {
+function getPagePensionnaireAdmin($require='', $alert='', $alertType='',$data='') {
    if ( Securite::verificationAcces()) {
       $title = "Page de gestion des pensionnaires";
       $description = "Page de gestion des pensionnaires";
       Securite::genererCookie();
+
+      $contentAdminAction = "";
+      if ($require !=="") require_once $require;
       require_once "views/back/adminPensionnaire.view.php";
    }
+   else {
+      throw new Exception("Vous n'avez pas le droit d'acceder à cette page");
+   }
+}
+
+function getPagePensionnaireAdminAjout() {
+   $alertType = '';
+   $alert = '';
+   
+   getPagePensionnaireAdmin("views/back/adminPensionnaireAjout.view.php", $alert, $alertType);
    
 }
+
+
+function getPagePensionnaireAdminModif() {
+   $alertType = '';
+   $alert = '';
+   $data=array();
+   
+   
+   getPagePensionnaireAdmin("views/back/adminPensionnaireModif.view.php",$alert,$alertType,$data);
+}
+
+function getPagePensionnaireAdminSup() {
+   $alert = "";
+   $alertType = "";
+  
+   getPagePensionnaireAdmin("",$alert,$alertType);
+
+}
+
 
 function getPageNewsAdmin($require='', $alert='', $alertType='',$data='') {
      
@@ -198,7 +232,7 @@ function getPageNewsAdminSup() {
       $alert = "La suppression de l'actualité n'a pas fonctionnée : ";
       $alertType = ALERT_DANGER;
    }
-   getPageNewsAdmin("views/back/adminNewsModif.view.php");
+   getPageNewsAdmin("");
 
 }
 }

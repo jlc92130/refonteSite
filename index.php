@@ -43,6 +43,12 @@ try {
                 break;
                 case "genererPensionnaireAdmin" : getPagePensionnaireAdmin();
                 break;
+                case "genererPensionnaireAdminAjout" : getPagePensionnaireAdminAjout();
+                break;
+                case "genererPensionnaireAdminModif" : getPagePensionnaireAdminModif();
+                break;
+                case "genererPensionnaireAdminSup" : getPagePensionnaireAdminSup();
+                break;
                 case "genererNewsAdmin" : getPageNewsAdmin();
                 break;
                 case "genererNewsAdminAjout" : getPageNewsAdminAjout();
