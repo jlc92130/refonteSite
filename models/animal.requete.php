@@ -65,4 +65,68 @@ function getImagesFromAnimal($idAnimal) {
     return $images;
 }
 
+function getStatutsAnimal() {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM statut";
+    $stmt = $bdd->prepare($req);
+    $stmt-> execute();
+    $statuts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $statuts;
 
+}
+
+function getListeCaracteresAnimal() {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM caractere ";
+    $stmt = $bdd->prepare($req);
+    $stmt-> execute();
+    $caracteres = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->closeCursor();
+    return $caracteres;
+}
+
+function insertAnimalIntoBD($nom,$dateN,$puce,$type,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,
+    $adoptionDesc,$localisation,$engagement) {
+        $bdd = connexionPDO();
+        $req = "INSERT INTO animal (nom_animal, type_animal, puce, sexe, date_naissance_animal, ami_chien,ami_chat,ami_enfant,description_animal,adoption_description_animal,localisation_description_animal,engagement_description_animal,id_statut)
+        values (:nom, :type, :puce, :sexe, :dateN, :amiChien, :amiChat, :amiEnfant, :description, :adoptionDesc, :localisation, :engagement, :statut)";
+        $stmt= $bdd->prepare($req);
+        $stmt->bindValue(":nom",$nom,PDO::PARAM_STR);
+        $stmt->bindValue(":type",$type,PDO::PARAM_STR);
+        $stmt->bindValue(":puce",$puce,PDO::PARAM_STR);
+        $stmt->bindValue(":sexe",$sexe,PDO::PARAM_INT);
+        $stmt->bindValue(":dateN",$dateN,PDO::PARAM_STR);
+        $stmt->bindValue(":amiChien",$amiChien,PDO::PARAM_STR);
+        $stmt->bindValue(":amiChat",$amiChat,PDO::PARAM_STR);
+        $stmt->bindValue(":amiEnfant",$amiEnfant,PDO::PARAM_STR);
+        $stmt->bindValue(":description",$description,PDO::PARAM_STR);
+        $stmt->bindValue(":adoptionDesc",$adoptionDesc,PDO::PARAM_STR);
+        $stmt->bindValue(":localisation",$localisation,PDO::PARAM_STR);
+        $stmt->bindValue(":engagement",$engagement,PDO::PARAM_STR);
+        $stmt->bindValue(":statut",$statut,PDO::PARAM_INT); 
+        $stmt->execute();
+        $res = $bdd->lastInsertId();
+        $stmt->closeCursor();
+    return $res;
+}
+
+function insertIntoContient($idAnimal,$idImage) {
+    $bdd = connexionPDO();
+    $req = "INSERT INTO contient (id_image,id_animal) values (:idImage,:idAnimal)";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':idAnimal',$idAnimal,PDO::PARAM_INT);
+    $stmt->bindValue(':idImage',$idImage,PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+
+}
+function insertIntoDispose($caractere,$idAnimal) {
+    $bdd = connexionPDO();
+    $req = "INSERT INTO dispose (id_caractere,id_animal) values (:caractere,:idAnimal)";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':caractere',$caractere,PDO::PARAM_INT);
+    $stmt->bindValue(':idAnimal',$idAnimal,PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+}

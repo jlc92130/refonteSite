@@ -3,7 +3,9 @@ require_once "public/utile/gestionImage.php";
 require_once  "public/utile/formatage.php";
 require_once "config/config.php";
 require_once "models/admin.dao.php";
+require_once "models/image.dao.php";
 require_once "models/actualites.requete.php";
+
 
 function getPageLogin() {
    $title = "Page de login";
@@ -71,6 +73,9 @@ function getPagePensionnaireAdmin($require='', $alert='', $alertType='',$data=''
       $description = "Page de gestion des pensionnaires";
       Securite::genererCookie();
 
+      $statuts    = getStatutsAnimal();
+      $caracteres = getListeCaracteresAnimal();
+
       $contentAdminAction = "";
       if ($require !=="") require_once $require;
       require_once "views/back/adminPensionnaire.view.php";
@@ -81,9 +86,56 @@ function getPagePensionnaireAdmin($require='', $alert='', $alertType='',$data=''
 }
 
 function getPagePensionnaireAdminAjout() {
-   $alertType = '';
+   $alertType = 0;
    $alert = '';
-   
+   //we verify the field that are mandatory in the dbb
+   if (isset($_POST['nom']) && !empty($_POST['nom']) && isset($_POST['dateN']) && !empty($_POST['dateN'])) {
+      $nom     = Securite::secureHTML($_POST['nom']);
+      $dateN   = Securite::secureHTML($_POST['dateN']);
+      $puce    = Securite::secureHTML($_POST['puce']);
+      $type    = Securite::secureHTML($_POST['type']);
+      $sexe    = Securite::secureHTML($_POST['sexe']);
+      $statut  = Securite::secureHTML($_POST['statut']);
+      $amiChien = Securite::secureHTML($_POST['amiChien']);
+      $amiChat = Securite::secureHTML($_POST['amiChat']);
+      $amiEnfant = Securite::secureHTML($_POST['amiEnfant']);
+      $description = Securite::secureHTML($_POST['description']);
+      $adoptionDesc = Securite::secureHTML($_POST['adoptionDesc']);
+      $localisation = Securite::secureHTML($_POST['localisation']);
+      $engagement = Securite::secureHTML($_POST['engagement']);
+      $fileImage = $_FILES['imageActu'];
+      $caractere1 = Securite::secureHTML($_POST['caractere1']);
+      $caractere2 = Securite::secureHTML($_POST['caractere2']);
+      $caractere3 = Securite::secureHTML($_POST['caractere3']);
+      
+
+      // directory where i put the image
+      $repertoire = "public/src/img/sites/animaux/".$type."/".strtolower($nom)."/";
+      
+      try {
+         $nomImage = ajoutImage($fileImage,$repertoire,$nom);
+         $idImage = insertImageIntoBD($nomImage,"animaux/".$type."/".strtolower($nom)."/".$nomImage);
+         $idAnimal = insertAnimalIntoBD($nom,$dateN,$puce,$type,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,
+         $adoptionDesc,$localisation,$engagement);
+         
+         if ($idAnimal>0) {
+            $alert = "La création de l'animal est effectuée";
+            $alertType = ALERT_SUCCESS;
+            insertIntoContient($idAnimal,$idImage);
+            
+            insertIntoDispose($caractere,$idAnimal);
+
+         }
+         else {
+            throw new Exception("L'insertion en BD n'a pas fonctionnée");
+         }
+      }
+      catch (Exception $e) {
+         $alert = "La création de l'animal n'a pas fonctionnée <br />".$e->getMessage();
+         $alertType = ALERT_DANGER;
+      }
+   } 
+  
    getPagePensionnaireAdmin("views/back/adminPensionnaireAjout.view.php", $alert, $alertType);
    
 }
@@ -143,7 +195,7 @@ function getPageNewsAdminAjout() {
          $nomImage = ajoutImage($fileImage, $repertoire,$titreActu);
 
          // we recover the id of the image we put in dbb
-         $idImage = insertImageNewsIntoBD($nomImage,"news/".$nomImage);
+         $idImage = insertImageIntoBD($nomImage,"news/".$nomImage);
         
 
       if (insertActualiteIntoBD($titreActu,$typeActu,$contenuActu,$date,$idImage)) {
@@ -194,7 +246,7 @@ function getPageNewsAdminModif() {
             $repertoire = "public/src/img/sites/news/";
             $nomImage = ajoutImage($fileImage, $repertoire,$titreActu);
             // id of the uploaded image if we don't upload image then we will have the id of the current image
-            $idImage = insertImageNewsIntoBD($nomImage,"news/".$nomImage);
+            $idImage = insertImageIntoBD($nomImage,"news/".$nomImage);
          }
       
          if (updateActualiteIntoBD($idActualite,$titreActu,$contenuActu,$typeActu,$idImage)) {

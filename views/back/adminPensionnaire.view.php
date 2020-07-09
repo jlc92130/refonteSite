@@ -14,5 +14,5 @@ echo styleTitreNiveau1("Page de gestion des pensionnaires" , COLOR_PENSIONNAIRE)
 
 <?php
 $content = ob_get_clean();
-require "views/commons/template.php" 
+require "views/commons/template.php"; 
 ?> 
