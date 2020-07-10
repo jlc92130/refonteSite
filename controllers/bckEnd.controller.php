@@ -122,8 +122,15 @@ function getPagePensionnaireAdminAjout() {
             $alert = "La création de l'animal est effectuée";
             $alertType = ALERT_SUCCESS;
             insertIntoContient($idAnimal,$idImage);
+
+            insertIntoDispose($caractere1,$idAnimal);
+            if ($caractere1 != $caractere2) {
+               insertIntoDispose($caractere2,$idAnimal);
+            }
+            if ($caractere3 != $caractere2 && $caractere3 != $caractere1) {
+               insertIntoDispose($caractere3,$idAnimal);
+            }
             
-            insertIntoDispose($caractere,$idAnimal);
 
          }
          else {
