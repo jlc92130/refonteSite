@@ -76,6 +76,7 @@ function getPagePensionnaireAdmin($require='', $alert='', $alertType='',$data=''
       $statuts    = getStatutsAnimal();
       $caracteres = getListeCaracteresAnimal();
 
+
       $contentAdminAction = "";
       if ($require !=="") require_once $require;
       require_once "views/back/adminPensionnaire.view.php";
@@ -152,6 +153,26 @@ function getPagePensionnaireAdminModif() {
    $alertType = '';
    $alert = '';
    $data=array();
+
+   if (isset($_POST['etape']) && (int)$_POST['etape'] >= 3) {
+      $type = $_POST['typeAnimal'];
+      $idStatut = Securite::secureHTML($_POST['statutAnimal']);
+      $data['animaux'] = getAnimauxFromTypeAndStatut($type,$idStatut);
+   }
+
+   if (isset($_POST['etape']) && (int)$_POST['etape'] >=4) {
+      $idAnimal = Securite::secureHTML($_POST['animal']);
+      $data['animal'] = getAnimalFromIdAnimalBD((int)$idAnimal);
+      $caracteres = getAnimalCaracteresBD($idAnimal);
+      $data['animal']['caractere1'] = $caracteres[0];
+      if (count($caracteres)>1) {
+         $data['animal']['caractere2'] = $caracteres[1];
+      }
+      if (count($caracteres)>2) {
+         $data['animal']['caractere3'] = $caracteres[2];
+      }
+     
+   }
    
    
    getPagePensionnaireAdmin("views/back/adminPensionnaireModif.view.php",$alert,$alertType,$data);

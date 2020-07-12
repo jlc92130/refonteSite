@@ -130,3 +130,27 @@ function insertIntoDispose($caractere,$idAnimal) {
     $stmt->execute();
     $stmt->closeCursor();
 }
+function getAnimauxFromTypeAndStatut($type,$idStatut) {
+
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM animal WHERE id_statut = :idStatut AND type_animal = :type";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':idStatut',$idStatut,PDO::PARAM_INT);
+    $stmt->bindValue(':type',$type,PDO::PARAM_STR);
+    $stmt->execute();
+    $animaux = $stmt->fetchAll();
+    $stmt->closeCursor();
+    return $animaux;
+}
+function getAnimalCaracteresBD($idAnimal) {
+    $bdd = connexionPDO();
+    $req = "SELECT * FROM dispose  
+    WHERE id_animal = :idAnimal";
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':idAnimal',$idAnimal,PDO::PARAM_INT);
+    $stmt->execute();
+    $caracteres = $stmt->fetchAll();
+    $stmt->closeCursor();
+    //we have all the (id_caractere,id_animal) for a particular animal
+    return $caracteres;
+}
