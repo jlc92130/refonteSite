@@ -171,7 +171,41 @@ function getPagePensionnaireAdminModif() {
       if (count($caracteres)>2) {
          $data['animal']['caractere3'] = $caracteres[2];
       }
-     
+   }
+   if (isset($_POST['etape']) && (int)$_POST['etape'] >=5) {
+      $nom     = Securite::secureHTML($_POST['nom']);
+      $dateN   = Securite::secureHTML($_POST['dateN']);
+      $puce    = Securite::secureHTML($_POST['puce']);
+      $typeSaisi    = Securite::secureHTML($_POST['type']);
+      $sexe    = Securite::secureHTML($_POST['sexe']);
+      $statut  = Securite::secureHTML($_POST['statut']);
+      $amiChien = Securite::secureHTML($_POST['amiChien']);
+      $amiChat = Securite::secureHTML($_POST['amiChat']);
+      $amiEnfant = Securite::secureHTML($_POST['amiEnfant']);
+      $description = Securite::secureHTML($_POST['description']);
+      $adoptionDesc = Securite::secureHTML($_POST['adoptionDesc']);
+      $localisation = Securite::secureHTML($_POST['localisation']);
+      $engagement = Securite::secureHTML($_POST['engagement']);
+      $fileImage = $_FILES['imageActu'];
+      $caractere1 = Securite::secureHTML($_POST['caractere1']);
+      $caractere2 = Securite::secureHTML($_POST['caractere2']);
+      $caractere3 = Securite::secureHTML($_POST['caractere3']);
+      try {
+         if(updateAnimalIntoBD($nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3)) {
+            $alert = "La modification de l'animal a été effectué";
+            $alertType = ALERT_SUCCESS;
+
+         }
+         else {
+            $alert = "La modification en base de donnée n'a pas eu lieu";
+         }
+
+      }
+      catch (Exception $e) {
+         $alert = "La modification de l'animal n'a pas fonctionnée <br />".$e->getMessage();
+         $alertType = ALERT_DANGER;
+
+      }
    }
    
    

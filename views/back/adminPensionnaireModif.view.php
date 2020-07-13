@@ -26,14 +26,14 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
     <label for="typeAnimal" name="typeAnimal">Type animal:</label>
     <select name="typeAnimal" id="typeAnimal" class="form-control">
         <option ></option>
-        <option value="chat" <?php if(isset($_POST['typeAnimal']) && $_POST['typeAnimal'] == 'chat') echo "selected" ?> >Chats</option>
-        <option value="chien" <?php if(isset($_POST['typeAnimal']) && $_POST['typeAnimal'] == 'chien') echo "selected" ?>>Chiens</option>
+        <option value="chat" <?php if(isset($_POST['typeAnimal']) && $_POST['typeAnimal'] === 'chat')   echo "selected" ?> >Chats</option>
+        <option value="chien" <?php if(isset($_POST['typeAnimal']) && $_POST['typeAnimal'] === 'chien') echo "selected" ?>>Chiens</option>
     </select>
     <?php } ?> 
 </form>
 
 
-<?php if(isset($_POST['etape']) && (int) $_POST['etape'] >=3) { ?>
+    <?php if(isset($_POST['etape']) && (int) $_POST['etape'] >=3) { ?>
 <form action="" method="POST" enctype="multipart/form-data" onchange = "submit()">
     <input type="hidden" name="etape" value="4">
     <input type="hidden" name="statutAnimal" value="<?= $_POST['statutAnimal'] ?>" >
@@ -43,17 +43,17 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
         <option ></option>
         <?php foreach($data['animaux'] as $animal) { ?>
         <option value="<?= $animal['id_animal'] ?>" <?php if(isset($_POST['animal']) && $_POST['animal'] === $animal['id_animal']) echo "selected" ?> >
-        <?= $animal['nom_animal'] ?>
+            <?= $animal['nom_animal'] ?>
         </option>
         <?php } ?>
-        </select>
+    </select>
     <?php } ?> 
 </form>
 
 <br /><br />
 
 <?php if(isset($_POST['etape']) && (int) $_POST['etape'] >=4) { ?>
-<form action="" method="POST" enctype="multipart/form-data" onchange = "submit()">
+<form action="" method="POST" enctype="multipart/form-data" >
     <input type="hidden" name="etape" value="5">
     <input type="hidden" name="statutAnimal" value="<?= $_POST['statutAnimal'] ?>" >
     <input type="hidden" name="typeAnimal" value="<?= $_POST['typeAnimal'] ?>" >
@@ -61,7 +61,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
        
     <?=   styleTitreNiveau3("Modification de l'animal" , COLOR_PENSIONNAIRE); ?> 
          
-        <div class="row mt-2">
+    <div class="row mt-2">
         <div class="form-group row no-gutters  col-4">
             <label for="nom" class="col-12 col-md-auto pr-2">Nom: </label>
             <input type="text" class="col form-control" name="nom" value="<?=$data['animal']['nom_animal'] ?>" id="nom" required>
@@ -197,11 +197,10 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
         <input type="file" class="form-control-file" name="imageActu" id="imageActu">
     </div>
 
-    <?php if(isset($_POST['etape']) && (int) $_POST['etape'] >=5) { ?>
     <div>
         <button class="btn btn-primary">Valider</button>
     </div>
-    
+
 </form>
 <?php } ?> 
 

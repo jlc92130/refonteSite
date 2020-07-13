@@ -154,3 +154,7 @@ function getAnimalCaracteresBD($idAnimal) {
     //we have all the (id_caractere,id_animal) for a particular animal
     return $caracteres;
 }
+function updateAnimalIntoBD($nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3) {
+    $bdd = connexionPDO();
+    $req = 'UPDATE animal ';
+}
