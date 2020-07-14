@@ -149,8 +149,8 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
                 <td>
                     <select name="caractere1">
                     <?php foreach($caracteres as $caractere) { ?>
-                        <option value="<?= $caractere['id_caractere'] ?>" <?php if($data['animal']['caractere1']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
-                        <?= $caractere['libelle_caractere_m']  ?>
+                        <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caractere1']) && $data['animal']['caractere1']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
+                            <?= $caractere['libelle_caractere_m']  ?>
                         </option>
                     <?php } ?>
                     </select>
@@ -159,7 +159,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
                     <select name="caractere2">
                     <?php foreach($caracteres as $caractere) { ?>
                         <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caractere2']) && $data['animal']['caractere2']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
-                        <?= $caractere['libelle_caractere_m']  ?>
+                            <?= $caractere['libelle_caractere_m']  ?>
                         </option>
                     <?php } ?>
                 </td>
@@ -167,7 +167,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
                     <select name="caractere3">
                     <?php foreach($caracteres as $caractere) { ?>
                         <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caractere3']) && $data['animal']['caractere3']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
-                        <?= $caractere['libelle_caractere_m']  ?>
+                            <?= $caractere['libelle_caractere_m']  ?>
                         </option>
                     <?php } ?>
                     </select>

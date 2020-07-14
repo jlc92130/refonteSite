@@ -154,7 +154,39 @@ function getAnimalCaracteresBD($idAnimal) {
     //we have all the (id_caractere,id_animal) for a particular animal
     return $caracteres;
 }
-function updateAnimalIntoBD($nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3) {
+function updateAnimalIntoBD($idAnimal,$nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3) {
     $bdd = connexionPDO();
-    $req = 'UPDATE animal ';
+    $req = 'UPDATE animal SET nom_animal = :nom, date_naissance_animal = :dateN, puce = :puce, type_animal = :typeSaisi, sexe = :sexe,
+    id_statut = :statut, ami_chien = :amiChien, ami_Chat = :amiChat, ami_Enfant = :amiEnfant,
+    description_animal = :description, adoption_description_animal = :adoptionDesc, localisation_description_animal = :localisation,
+    engagement_description_animal = :engagement
+    WHERE id_animal = :idAnimal';
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':idAnimal',$idAnimal,PDO::PARAM_INT);
+    $stmt->bindValue(':nom',$nom,PDO::PARAM_STR);
+    $stmt->bindValue(':dateN',$dateN,PDO::PARAM_STR);
+    $stmt->bindValue(':puce',$puce,PDO::PARAM_STR);
+    $stmt->bindValue(':typeSaisi',$typeSaisi,PDO::PARAM_STR);
+    $stmt->bindValue(':sexe',$sexe,PDO::PARAM_INT);
+    $stmt->bindValue(':statut',$statut,PDO::PARAM_INT);
+    $stmt->bindValue(':amiChien',$amiChien,PDO::PARAM_STR);
+    $stmt->bindValue(':amiChat',$amiChat,PDO::PARAM_STR);
+    $stmt->bindValue(':amiEnfant',$amiEnfant,PDO::PARAM_STR);
+    $stmt->bindValue(':description',$description,PDO::PARAM_STR);
+    $stmt->bindValue(':adoptionDesc',$adoptionDesc,PDO::PARAM_STR);
+    $stmt->bindValue(':localisation',$localisation,PDO::PARAM_STR);
+    $stmt->bindValue(':engagement',$engagement,PDO::PARAM_STR);
+    $res = $stmt->execute();
+    
+    if ($res>0) true;
+    return false;
+}
+function deleteCaractereFromAnimalBD($idAnimal) {
+    $bdd = connexionPDO();
+    $req = 'DELETE FROM dispose WHERE id_animal = :idAnimal';
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':idAnimal', $idAnimal,PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->closeCursor();
+    
 }

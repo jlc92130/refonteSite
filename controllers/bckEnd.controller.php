@@ -164,7 +164,9 @@ function getPagePensionnaireAdminModif() {
       $idAnimal = Securite::secureHTML($_POST['animal']);
       $data['animal'] = getAnimalFromIdAnimalBD((int)$idAnimal);
       $caracteres = getAnimalCaracteresBD($idAnimal);
-      $data['animal']['caractere1'] = $caracteres[0];
+      if (count($caracteres)>0) {
+         $data['animal']['caractere1'] = $caracteres[0];
+      }
       if (count($caracteres)>1) {
          $data['animal']['caractere2'] = $caracteres[1];
       }
@@ -173,6 +175,7 @@ function getPagePensionnaireAdminModif() {
       }
    }
    if (isset($_POST['etape']) && (int)$_POST['etape'] >=5) {
+      $idAnimal = $data['animal']['id_animal'];
       $nom     = Securite::secureHTML($_POST['nom']);
       $dateN   = Securite::secureHTML($_POST['dateN']);
       $puce    = Securite::secureHTML($_POST['puce']);
@@ -191,7 +194,16 @@ function getPagePensionnaireAdminModif() {
       $caractere2 = Securite::secureHTML($_POST['caractere2']);
       $caractere3 = Securite::secureHTML($_POST['caractere3']);
       try {
-         if(updateAnimalIntoBD($nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3)) {
+         if(updateAnimalIntoBD($idAnimal,$nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3)) {
+            deleteCaractereFromAnimalBD($idAnimal);
+            insertIntoDispose($caractere1,$idAnimal);
+            if ($caractere2 !== $caractere1) {
+               insertIntoDispose($caractere2,$idAnimal);
+            }
+            if ($caractere3 !== $caractere1 && $caractere3 !== $caractere2) {
+               insertIntoDispose($caractere3,$idAnimal);
+            }
+            
             $alert = "La modification de l'animal a été effectué";
             $alertType = ALERT_SUCCESS;
 
@@ -199,6 +211,7 @@ function getPagePensionnaireAdminModif() {
          else {
             $alert = "La modification en base de donnée n'a pas eu lieu";
          }
+         $data['animal'] = getAnimalFromIdAnimalBD($idAnimal);
 
       }
       catch (Exception $e) {
