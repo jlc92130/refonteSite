@@ -29,9 +29,9 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
         <option value="chat" <?php if(isset($_POST['typeAnimal']) && $_POST['typeAnimal'] === 'chat')   echo "selected" ?> >Chats</option>
         <option value="chien" <?php if(isset($_POST['typeAnimal']) && $_POST['typeAnimal'] === 'chien') echo "selected" ?>>Chiens</option>
     </select>
-    <?php } ?> 
+    
 </form>
-
+<?php } ?> 
 
     <?php if(isset($_POST['etape']) && (int) $_POST['etape'] >=3) { ?>
 <form action="" method="POST" enctype="multipart/form-data" onchange = "submit()">
@@ -47,8 +47,9 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
         </option>
         <?php } ?>
     </select>
-    <?php } ?> 
+    
 </form>
+<?php } ?> 
 
 <br /><br />
 
@@ -147,10 +148,11 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
         <tbody>
             <tr class="text-center">
                 <td>
-                    <select name="caractere1">
+                     <select name="caractere1">
                     <?php foreach($caracteres as $caractere) { ?>
-                        <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caractere1']) && $data['animal']['caractere1']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
+                        <option value="<?= $caractere['id_caractere'] ?>" <?php  if( $data['animal']['caract1']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
                             <?= $caractere['libelle_caractere_m']  ?>
+                          
                         </option>
                     <?php } ?>
                     </select>
@@ -158,7 +160,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
                 <td>
                     <select name="caractere2">
                     <?php foreach($caracteres as $caractere) { ?>
-                        <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caractere2']) && $data['animal']['caractere2']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
+                        <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caract2'][0]) && $data['animal']['caract2'][0] === $caractere['id_caractere']) echo 'selected' ?> >
                             <?= $caractere['libelle_caractere_m']  ?>
                         </option>
                     <?php } ?>
@@ -166,7 +168,7 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
                 <td>
                     <select name="caractere3">
                     <?php foreach($caracteres as $caractere) { ?>
-                        <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caractere3']) && $data['animal']['caractere3']['id_caractere'] === $caractere['id_caractere']) echo 'selected' ?> >
+                        <option value="<?= $caractere['id_caractere'] ?>" <?php if(isset($data['animal']['caract3'][0]) && $data['animal']['caract3'][0] === $caractere['id_caractere']) echo 'selected' ?> >
                             <?= $caractere['libelle_caractere_m']  ?>
                         </option>
                     <?php } ?>
@@ -177,20 +179,20 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
     </table>                    
 
     <div class="form-group ">
-        <label for="description"> <?= $data['animal']['description_animal'] ?> </label>
-        <textarea class="form-control" id="description" name="description" row="5"></textarea>
+        <label for="description">Description</label>
+        <textarea class="form-control" id="description" name="description" row="5"><?= $data['animal']['description_animal'] ?></textarea>
     </div>
     <div class="form-group ">
-        <label for="adoptionDesc"> <?= $data['animal']['adoption_description_animal'] ?> </label>
-        <textarea class="form-control" id="adoptionDesc" name="adoptionDesc" row="5"></textarea>
+        <label for="adoptionDesc">Description Adoption  </label>
+        <textarea class="form-control" id="adoptionDesc" name="adoptionDesc" row="5"><?= $data['animal']['adoption_description_animal'] ?></textarea>
     </div>
     <div class="form-group ">
-        <label for="localisation"> <?= $data['animal']['localisation_description_animal'] ?> </label>
-        <textarea class="form-control" id="localisation" name="localisation" row="5"></textarea>
+        <label for="localisation">Localisation</label>
+        <textarea class="form-control" id="localisation" name="localisation" row="5"> <?= $data['animal']['localisation_description_animal'] ?> </textarea>
     </div>
     <div class="form-group ">
-        <label for="engagement"> <?= $data['animal']['engagement_description_animal'] ?> </label>
-        <textarea class="form-control" id="engagement" name="engagement" row="5"></textarea>
+        <label for="engagement">Engagement</label>
+        <textarea class="form-control" id="engagement" name="engagement" row="5"> <?= $data['animal']['engagement_description_animal'] ?> </textarea>
     </div>
     <div class="form-group mt-5">
         <label for="imageActu">Image :</label>

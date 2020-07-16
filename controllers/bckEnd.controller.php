@@ -7,6 +7,7 @@ require_once "models/image.dao.php";
 require_once "models/actualites.requete.php";
 
 
+
 function getPageLogin() {
    $title = "Page de login";
    $description = "Page de login";
@@ -154,6 +155,7 @@ function getPagePensionnaireAdminModif() {
    $alert = '';
    $data=array();
 
+
    if (isset($_POST['etape']) && (int)$_POST['etape'] >= 3) {
       $type = $_POST['typeAnimal'];
       $idStatut = Securite::secureHTML($_POST['statutAnimal']);
@@ -164,14 +166,16 @@ function getPagePensionnaireAdminModif() {
       $idAnimal = Securite::secureHTML($_POST['animal']);
       $data['animal'] = getAnimalFromIdAnimalBD((int)$idAnimal);
       $caracteres = getAnimalCaracteresBD($idAnimal);
+      
       if (count($caracteres)>0) {
-         $data['animal']['caractere1'] = $caracteres[0];
+         $data['animal']['caract1'] = $caracteres[0];
+        
       }
       if (count($caracteres)>1) {
-         $data['animal']['caractere2'] = $caracteres[1];
+         $data['animal']['caract2'] = $caracteres[1];
       }
       if (count($caracteres)>2) {
-         $data['animal']['caractere3'] = $caracteres[2];
+         $data['animal']['caract3'] = $caracteres[2];
       }
    }
    if (isset($_POST['etape']) && (int)$_POST['etape'] >=5) {
@@ -193,9 +197,11 @@ function getPagePensionnaireAdminModif() {
       $caractere1 = Securite::secureHTML($_POST['caractere1']);
       $caractere2 = Securite::secureHTML($_POST['caractere2']);
       $caractere3 = Securite::secureHTML($_POST['caractere3']);
+      
       try {
-         if(updateAnimalIntoBD($idAnimal,$nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement,$caractere1,$caractere2,$caractere3)) {
-            deleteCaractereFromAnimalBD($idAnimal);
+         //$data['animal'] = getAnimalFromIdAnimalBD($idAnimal);
+         if(updateAnimalIntoBD($idAnimal,$nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement)) {
+            deleteCaracteresFromAnimalBD($idAnimal);
             insertIntoDispose($caractere1,$idAnimal);
             if ($caractere2 !== $caractere1) {
                insertIntoDispose($caractere2,$idAnimal);
@@ -203,6 +209,20 @@ function getPagePensionnaireAdminModif() {
             if ($caractere3 !== $caractere1 && $caractere3 !== $caractere2) {
                insertIntoDispose($caractere3,$idAnimal);
             }
+
+      $caracteres = getAnimalCaracteresBD($idAnimal);
+     
+      if (count($caracteres)>0) {
+         $data['animal']['caract1'] = $caracteres[0];
+        
+        
+      }
+      if (count($caracteres)>1) {
+         $data['animal']['caract2'] = $caracteres[1];
+      }
+      if (count($caracteres)>2) {
+         $data['animal']['caract3'] = $caracteres[2];
+      }
             
             $alert = "La modification de l'animal a été effectué";
             $alertType = ALERT_SUCCESS;
@@ -211,7 +231,7 @@ function getPagePensionnaireAdminModif() {
          else {
             $alert = "La modification en base de donnée n'a pas eu lieu";
          }
-         $data['animal'] = getAnimalFromIdAnimalBD($idAnimal);
+        
 
       }
       catch (Exception $e) {
@@ -219,6 +239,8 @@ function getPagePensionnaireAdminModif() {
          $alertType = ALERT_DANGER;
 
       }
+      
+     
    }
    
    
