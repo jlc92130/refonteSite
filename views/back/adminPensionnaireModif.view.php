@@ -194,15 +194,15 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
         <label for="engagement">Engagement</label>
         <textarea class="form-control" id="engagement" name="engagement" row="5"> <?= $data['animal']['engagement_description_animal'] ?> </textarea>
     </div>
-    <div class="form-group mt-5">
-        <label for="imageActu">Image :</label>
-        <input type="file" class="form-control-file" name="imageActu" id="imageActu">
-    </div>
+    
+    <?php require_once('views/back/imagesAnimalManager.view.php')  ?>
+
 
     <div>
         <button class="btn btn-primary">Valider</button>
+        <button id="btnSup"   class='btn btn-danger'>Supprimer</button>
     </div>
-
+    <script src="public/js/verificationSuppressionAnimal.js"></script>                   
 </form>
 <?php } ?> 
 

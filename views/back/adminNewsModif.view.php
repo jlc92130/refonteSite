@@ -85,9 +85,10 @@ echo styleTitreNiveau3("Choix:", COLOR_PENSIONNAIRE);
     </div>
 
 </form>
+<script src="public/js/verificationSuppressionActualite.js"></script>
 <?php } ?>
 
-<script src="public/js/verificationSuppressionActualite.js"></script>
+
 
 <?php
 $contentAdminAction = ob_get_clean(); 

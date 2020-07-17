@@ -177,6 +177,8 @@ function getPagePensionnaireAdminModif() {
       if (count($caracteres)>2) {
          $data['animal']['caract3'] = $caracteres[2];
       }
+
+      $data['animal']['images'] = getImagesFromAnimal($idAnimal);
    }
    if (isset($_POST['etape']) && (int)$_POST['etape'] >=5) {
       $idAnimal = $data['animal']['id_animal'];
@@ -210,19 +212,9 @@ function getPagePensionnaireAdminModif() {
                insertIntoDispose($caractere3,$idAnimal);
             }
 
-      $caracteres = getAnimalCaracteresBD($idAnimal);
-     
-      if (count($caracteres)>0) {
-         $data['animal']['caract1'] = $caracteres[0];
-        
-        
-      }
-      if (count($caracteres)>1) {
-         $data['animal']['caract2'] = $caracteres[1];
-      }
-      if (count($caracteres)>2) {
-         $data['animal']['caract3'] = $caracteres[2];
-      }
+            //$caracteres = getAnimalCaracteresBD($idAnimal);
+         
+            
             
             $alert = "La modification de l'animal a été effectué";
             $alertType = ALERT_SUCCESS;
@@ -239,7 +231,17 @@ function getPagePensionnaireAdminModif() {
          $alertType = ALERT_DANGER;
 
       }
-      
+      $data['animal'] = getAnimalFromIdAnimalBD($idAnimal);
+      $caracteres = getAnimalCaracteresBD($idAnimal);
+      if (count($caracteres)>0) {
+         $data['animal']['caract1'] = $caracteres[0];
+      }
+      if (count($caracteres)>1) {
+         $data['animal']['caract2'] = $caracteres[1];
+      }
+      if (count($caracteres)>2) {
+         $data['animal']['caract3'] = $caracteres[2];
+      }
      
    }
    
@@ -250,8 +252,25 @@ function getPagePensionnaireAdminModif() {
 function getPagePensionnaireAdminSup() {
    $alert = "";
    $alertType = "";
+
+   if(isset($_GET['sup']) && !empty($_GET['sup'])) {
+      try {
+         if(deleteAnimalFromBD(Securite::secureHTML($_GET['sup']))<1){
+            throw new Exception ("La suppression n'a pas fonctionnée en BD");
+         } ;
+         $alert = "La suppression de l'animal a fonctionnée";
+         $alertType = ALERT_SUCCESS;
+      }
+      catch (Exception $e) {
+         $alert = "La suppression de l'animal n'a pas fonctionnée";
+         $alertType = ALERT_DANGER;
+      }
+   }
+   else {
+      $alert = "Selectionner un animal";
+   }
   
-   getPagePensionnaireAdmin("",$alert,$alertType);
+   getPagePensionnaireAdmin("views/back/adminPensionnaireModif.view.php",$alert,$alertType);
 
 }
 
