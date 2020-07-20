@@ -199,3 +199,14 @@ function deleteAnimalFromBD($idAnimal) {
     $stmt->closeCursor();
     return $res;
 }
+
+function deleteImageFromAnimal($idImage,$idAnimal) {
+    $bdd = connexionPDO();
+    $req = 'DELETE FROM contient WHERE id_image = :idImage and id_animal = :idAnimal ';
+    $stmt = $bdd->prepare($req);
+    $stmt->bindValue(':idAnimal', $idAnimal, PDO::PARAM_INT);
+    $stmt->bindValue(':idImage', $idImage, PDO::PARAM_INT);
+    $res = $stmt->execute();
+    $stmt->closeCursor();
+    return $res;
+}

@@ -131,7 +131,7 @@ echo styleTitreNiveau2("Ajout d'un animal" , COLOR_PENSIONNAIRE);
     </div>
     <div class="form-group mt-5">
         <label for="imageActu">Image :</label>
-        <input type="file" class="form-control-file" name="imageActu" id="imageActu">
+        <input type="file" class="form-control-file" name="imageActu" id="imageActu" >
     </div>
 
     <div>

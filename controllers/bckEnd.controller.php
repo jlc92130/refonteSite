@@ -117,6 +117,7 @@ function getPagePensionnaireAdminAjout() {
       try {
          $nomImage = ajoutImage($fileImage,$repertoire,$nom);
          $idImage = insertImageIntoBD($nomImage,"animaux/".$type."/".strtolower($nom)."/".$nomImage);
+         
          $idAnimal = insertAnimalIntoBD($nom,$dateN,$puce,$type,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,
          $adoptionDesc,$localisation,$engagement);
          
@@ -160,9 +161,11 @@ function getPagePensionnaireAdminModif() {
       $type = $_POST['typeAnimal'];
       $idStatut = Securite::secureHTML($_POST['statutAnimal']);
       $data['animaux'] = getAnimauxFromTypeAndStatut($type,$idStatut);
+      
    }
 
    if (isset($_POST['etape']) && (int)$_POST['etape'] >=4) {
+      
       $idAnimal = Securite::secureHTML($_POST['animal']);
       $data['animal'] = getAnimalFromIdAnimalBD((int)$idAnimal);
       $caracteres = getAnimalCaracteresBD($idAnimal);
@@ -177,10 +180,11 @@ function getPagePensionnaireAdminModif() {
       if (count($caracteres)>2) {
          $data['animal']['caract3'] = $caracteres[2];
       }
-
       $data['animal']['images'] = getImagesFromAnimal($idAnimal);
    }
+
    if (isset($_POST['etape']) && (int)$_POST['etape'] >=5) {
+     
       $idAnimal = $data['animal']['id_animal'];
       $nom     = Securite::secureHTML($_POST['nom']);
       $dateN   = Securite::secureHTML($_POST['dateN']);
@@ -195,12 +199,18 @@ function getPagePensionnaireAdminModif() {
       $adoptionDesc = Securite::secureHTML($_POST['adoptionDesc']);
       $localisation = Securite::secureHTML($_POST['localisation']);
       $engagement = Securite::secureHTML($_POST['engagement']);
-      $fileImage = $_FILES['imageActu'];
       $caractere1 = Securite::secureHTML($_POST['caractere1']);
       $caractere2 = Securite::secureHTML($_POST['caractere2']);
       $caractere3 = Securite::secureHTML($_POST['caractere3']);
+      $imageToDel = Securite::secureHTML($_POST['imgToDelete']);
+       
       
       try {
+         $idImageSplited = explode('-', $imageToDel);
+         for ($i=0;$i<count($idImageSplited); $i++) {
+            deleteImageFromAnimal($idImageSplited[$i],$idAnimal);
+         }
+
          //$data['animal'] = getAnimalFromIdAnimalBD($idAnimal);
          if(updateAnimalIntoBD($idAnimal,$nom,$dateN,$puce,$typeSaisi,$sexe,$statut,$amiChien,$amiChat,$amiEnfant,$description,$adoptionDesc,$localisation,$engagement)) {
             deleteCaracteresFromAnimalBD($idAnimal);
@@ -242,6 +252,8 @@ function getPagePensionnaireAdminModif() {
       if (count($caracteres)>2) {
          $data['animal']['caract3'] = $caracteres[2];
       }
+      $data['animal']['images'] = getImagesFromAnimal($idAnimal);
+
      
    }
    
