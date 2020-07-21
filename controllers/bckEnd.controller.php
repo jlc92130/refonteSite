@@ -105,7 +105,7 @@ function getPagePensionnaireAdminAjout() {
       $adoptionDesc = Securite::secureHTML($_POST['adoptionDesc']);
       $localisation = Securite::secureHTML($_POST['localisation']);
       $engagement = Securite::secureHTML($_POST['engagement']);
-      $fileImage = $_FILES['imageActu'];
+      
       $caractere1 = Securite::secureHTML($_POST['caractere1']);
       $caractere2 = Securite::secureHTML($_POST['caractere2']);
       $caractere3 = Securite::secureHTML($_POST['caractere3']);
@@ -113,7 +113,8 @@ function getPagePensionnaireAdminAjout() {
 
       // directory where i put the image
       $repertoire = "public/src/img/sites/animaux/".$type."/".strtolower($nom)."/";
-      
+      $fileImage = $_FILES['imageActu'];
+
       try {
          $nomImage = ajoutImage($fileImage,$repertoire,$nom);
          $idImage = insertImageIntoBD($nomImage,"animaux/".$type."/".strtolower($nom)."/".$nomImage);
@@ -202,13 +203,27 @@ function getPagePensionnaireAdminModif() {
       $caractere1 = Securite::secureHTML($_POST['caractere1']);
       $caractere2 = Securite::secureHTML($_POST['caractere2']);
       $caractere3 = Securite::secureHTML($_POST['caractere3']);
+      
       $imageToDel = Securite::secureHTML($_POST['imgToDelete']);
-       
+      $nbImageToAdd = Securite::secureHTML($_POST['nbImage']);
       
       try {
          $idImageSplited = explode('-', $imageToDel);
          for ($i=0;$i<count($idImageSplited); $i++) {
             deleteImageFromAnimal($idImageSplited[$i],$idAnimal);
+         }
+         if($nbImageToAdd > 0) {
+            $repertoire = "public/src/img/sites/animaux/".$type."/".strtolower($nom)."/";
+            for($i=0; $i<$nbImageToAdd; $i++) {
+               $fileImage = $_FILES['image'.$i];
+               if($_FILES['image'.$i]['size'] > 0) {
+                  $nomImage = ajoutImage($fileImage,$repertoire,$nom);
+                  $idImage = insertImageIntoBD($nomImage,"animaux/".$type."/".strtolower($nom)."/".$nomImage);
+                  insertIntoContient($idAnimal,$idImage);
+               }
+            }
+               
+            
          }
 
          //$data['animal'] = getAnimalFromIdAnimalBD($idAnimal);
