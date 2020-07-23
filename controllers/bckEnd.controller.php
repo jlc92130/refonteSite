@@ -305,10 +305,13 @@ function getPagePensionnaireAdminSup() {
 function getPageNewsAdmin($require='', $alert='', $alertType='',$data='') {
      
    if ( Securite::verificationAcces()) {
+      Securite::genererCookie();
       $title = "Page de gestion des news";
       $description = "Page de gestion des news";
-      Securite::genererCookie();
+      
       $typeActualites = getTypesActualite();
+      $imagesBD = getAllImagesFromBD();
+
       $contentAdminAction="";
 
       if ($require !== '') require_once $require;
